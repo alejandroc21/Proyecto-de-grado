@@ -22,4 +22,9 @@ public class UsuarioService implements IUsuarioService{
     public void guardarUsuario(Usuario usuario) {
         repository.save(usuario);
     }
+
+    @Override
+    public Usuario UsuarioPorId(int id) {
+        return (Usuario) repository.findById(id).get();
+    }
 }

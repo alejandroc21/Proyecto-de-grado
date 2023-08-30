@@ -9,4 +9,6 @@ public interface IUsuarioService {
     List<Usuario> listarTodos();
 
     void guardarUsuario(Usuario usuario);
+
+    Usuario UsuarioPorId(int id);
 }
