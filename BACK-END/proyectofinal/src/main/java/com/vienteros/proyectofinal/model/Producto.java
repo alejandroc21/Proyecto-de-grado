@@ -20,6 +20,7 @@ public class Producto {
     @Column(name = "cantidad_final")
     private int cantidadFinal;
     private double peso;
+    //@Column(columnDefinition = "DATE")
     private Date fecha;
 
     @ManyToOne(targetEntity = Proyecto.class)
