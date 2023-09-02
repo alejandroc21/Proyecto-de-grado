@@ -28,6 +28,7 @@ public class ProductoController {
         service.eliminarProducto(Integer.parseInt(id));
     }
 
+    @PostMapping("/api/productos/")
     public void guardarProducto(@RequestBody Producto producto){
         service.guardarProducto(producto);
     }
