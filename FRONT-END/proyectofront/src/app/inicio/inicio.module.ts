@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { PresentacionComponent } from './presentacion/presentacion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     InicioRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class InicioModule { }
