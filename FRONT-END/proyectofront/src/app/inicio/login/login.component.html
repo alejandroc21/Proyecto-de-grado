@@ -1,7 +1,7 @@
 
 <form [formGroup]="loginForm">
     <h3>Inicia sesión</h3>
-
+    <p>{{loginError}}</p>
     <label for="email">Email:</label>
     <input formControlName="email" type="email" placeholder="Email" id="email">
 

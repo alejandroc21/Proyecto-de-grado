@@ -10,7 +10,7 @@ import { LoginRequest } from 'src/app/services/auth/loginRequest';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
-
+  loginError: string = "";
   loginForm=this.formBuilder.group({
     email:['alex@gmail.com',[Validators.required, Validators.email]],
     password:['', Validators.required],
@@ -19,9 +19,21 @@ export class LoginComponent  {
 
   login(){
     if(this.loginForm.valid){
-      this.loginService.login(this.loginForm.value as LoginRequest);
-      this.router.navigateByUrl('/panel');
-      this.loginForm.reset();
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        next: (userData) => {
+          console.log(userData);
+        },
+        error: (errorData) => {
+          console.error(errorData);
+          this.loginError=errorData;
+        },
+        complete: () => {
+          console.info("logiiiin");
+          this.router.navigateByUrl('/panel');
+          this.loginForm.reset();
+        }
+      });
+      
     }else{
       this.loginForm.markAllAsTouched();
     }

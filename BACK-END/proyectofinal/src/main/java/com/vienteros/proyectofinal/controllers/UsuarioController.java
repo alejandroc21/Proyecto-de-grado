@@ -1,12 +1,19 @@
 package com.vienteros.proyectofinal.controllers;
 
+
+
+import com.vienteros.proyectofinal.DTO.UsuarioDTO;
+import com.vienteros.proyectofinal.DTO.UsuarioLoginDTO;
 import com.vienteros.proyectofinal.model.Usuario;
 import com.vienteros.proyectofinal.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class UsuarioController {
 
@@ -28,5 +35,21 @@ public class UsuarioController {
         service.guardarUsuario(usuario);
     }
 
+    /*
+    @PostMapping("/loginu")
+    public ResponseEntity<String> login(@RequestBody UsuarioLoginDTO usuarioLoginDTO){
+        boolean logeado = service.verificarUsuario(usuarioLoginDTO.getEmail(), usuarioLoginDTO.getPassword());
+        if(logeado){
+            return ResponseEntity.ok("");
+        }else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("nope");
+        }
+    }*/
 
+
+    @PostMapping("/login")
+    public ResponseEntity<UsuarioDTO> login(@RequestBody UsuarioLoginDTO usuarioLoginDTO){
+        UsuarioDTO usuarioDTO = service.verificar(usuarioLoginDTO.getEmail(), usuarioLoginDTO.getPassword());
+        return ResponseEntity.ok(usuarioDTO);
+    }
 }
