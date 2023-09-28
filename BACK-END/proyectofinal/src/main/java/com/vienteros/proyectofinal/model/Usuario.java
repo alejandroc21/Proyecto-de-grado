@@ -18,6 +18,6 @@ public class Usuario {
     private String email;
     private String password;
 
-    @OneToMany(targetEntity = AsignarProyecto.class, fetch = FetchType.LAZY, mappedBy = "usuario")
-    private List<AsignarProyecto> asignarProyectos;
+    @OneToMany(targetEntity = Proyecto.class, fetch = FetchType.LAZY, mappedBy = "usuario")
+    private List<Proyecto> proyectos;
 }

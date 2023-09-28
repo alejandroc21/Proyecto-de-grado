@@ -1,7 +1,9 @@
-package com.vienteros.proyectofinal.service;
+package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.model.Producto;
 import com.vienteros.proyectofinal.repository.ProductoRepository;
+import com.vienteros.proyectofinal.service.IProductoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

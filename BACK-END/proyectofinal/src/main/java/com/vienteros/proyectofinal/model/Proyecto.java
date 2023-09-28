@@ -17,15 +17,16 @@ public class Proyecto {
     @Column(name = "tiempo_estimado_dd")
     private int tiempoEstimadoDias;
 
-    @OneToMany(targetEntity = AsignarProyecto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
-    private List<AsignarProyecto> asignarProyectos;
-
-    @OneToMany(targetEntity = AsignarProyecto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @OneToMany(targetEntity = Insumo.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
     private List<Insumo> insumos;
 
-    @OneToMany(targetEntity = AsignarProyecto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
-    private List<Planeacion> planeacion;
+    @OneToMany(targetEntity = Planeacion.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    private List<Planeacion> planeaciones;
 
-    @OneToMany(targetEntity = AsignarProyecto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
     private List<Producto> productos;
+
+    @ManyToOne(targetEntity = Usuario.class)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 }

@@ -1,7 +1,9 @@
-package com.vienteros.proyectofinal.service;
+package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.model.Insumo;
 import com.vienteros.proyectofinal.repository.InsumoRepository;
+import com.vienteros.proyectofinal.service.IInsumoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

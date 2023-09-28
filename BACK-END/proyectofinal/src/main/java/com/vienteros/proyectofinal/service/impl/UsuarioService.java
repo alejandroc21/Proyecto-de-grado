@@ -1,9 +1,11 @@
-package com.vienteros.proyectofinal.service;
+package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.DTO.UsuarioDTO;
 import com.vienteros.proyectofinal.exception.UsuarioNotFoundException;
 import com.vienteros.proyectofinal.model.Usuario;
 import com.vienteros.proyectofinal.repository.UsuarioRepository;
+import com.vienteros.proyectofinal.service.IUsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
