@@ -1,6 +1,7 @@
 package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.DTO.UsuarioDTO;
+import com.vienteros.proyectofinal.exception.GlobalHandlerException;
 import com.vienteros.proyectofinal.exception.UsuarioNotFoundException;
 import com.vienteros.proyectofinal.model.Usuario;
 import com.vienteros.proyectofinal.repository.UsuarioRepository;
@@ -28,6 +29,8 @@ public class UsuarioService implements IUsuarioService{
         repository.save(usuario);
     }
 
+
+
     @Override
     public Usuario UsuarioPorId(int id) {
         return (Usuario) repository.findById(id).get();
@@ -52,5 +55,16 @@ public class UsuarioService implements IUsuarioService{
         }else {
             throw new UsuarioNotFoundException("Usuario no encontrado");
         }
+    }
+
+    @Override
+    public UsuarioDTO registro(Usuario usuario) {
+        if(!repository.existsByEmail(usuario.getEmail())){
+            repository.save(usuario);
+            return verificar(usuario.getEmail(), usuario.getPassword());
+        }else{
+            throw new UsuarioNotFoundException("este email ya existe");
+        }
+
     }
 }

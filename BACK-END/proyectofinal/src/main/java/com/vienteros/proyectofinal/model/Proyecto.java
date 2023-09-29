@@ -13,7 +13,7 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_proyecto")
     private int id;
-    private String tipo;
+    private String nombre;
     @Column(name = "tiempo_estimado_dd")
     private int tiempoEstimadoDias;
 

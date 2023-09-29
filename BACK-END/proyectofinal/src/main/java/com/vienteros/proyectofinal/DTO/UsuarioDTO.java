@@ -1,7 +1,10 @@
 package com.vienteros.proyectofinal.DTO;
 
+import com.vienteros.proyectofinal.model.Proyecto;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter

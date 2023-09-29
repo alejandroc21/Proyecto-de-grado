@@ -16,4 +16,6 @@ public interface IUsuarioService {
     boolean verificarUsuario(String nombre, String password);
 
     UsuarioDTO verificar(String email, String password);
+
+    UsuarioDTO registro(Usuario usuario);
 }

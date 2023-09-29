@@ -35,6 +35,12 @@ public class UsuarioController {
         service.guardarUsuario(usuario);
     }
 
+    @PostMapping("/registro")
+    public ResponseEntity<UsuarioDTO> registro(@RequestBody Usuario usuario){
+        UsuarioDTO usuarioDTO = service.registro(usuario);
+        return ResponseEntity.ok(usuarioDTO);
+    }
+
     /*
     @PostMapping("/loginu")
     public ResponseEntity<String> login(@RequestBody UsuarioLoginDTO usuarioLoginDTO){
