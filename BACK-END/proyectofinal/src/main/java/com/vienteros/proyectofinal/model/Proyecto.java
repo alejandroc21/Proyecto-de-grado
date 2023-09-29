@@ -1,5 +1,6 @@
 package com.vienteros.proyectofinal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,12 +19,15 @@ public class Proyecto {
     private int tiempoEstimadoDias;
 
     @OneToMany(targetEntity = Insumo.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @JsonIgnore
     private List<Insumo> insumos;
 
     @OneToMany(targetEntity = Planeacion.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @JsonIgnore
     private List<Planeacion> planeaciones;
 
     @OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @JsonIgnore
     private List<Producto> productos;
 
     @ManyToOne(targetEntity = Usuario.class)

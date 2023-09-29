@@ -1,11 +1,12 @@
 package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.DTO.UsuarioDTO;
-import com.vienteros.proyectofinal.exception.GlobalHandlerException;
 import com.vienteros.proyectofinal.exception.UsuarioNotFoundException;
 import com.vienteros.proyectofinal.model.Usuario;
 import com.vienteros.proyectofinal.repository.UsuarioRepository;
 import com.vienteros.proyectofinal.service.IUsuarioService;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,25 +26,11 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public void guardarUsuario(Usuario usuario) {
-        repository.save(usuario);
-    }
-
-
-
-    @Override
     public Usuario UsuarioPorId(int id) {
         return (Usuario) repository.findById(id).get();
     }
 
-    @Override
-    public boolean verificarUsuario(String email, String password) {
-        Optional<Usuario> usuarioOptional = repository.findByEmailAndPassword(email, password);
-
-        return usuarioOptional.isPresent();
-    }
-
-    public UsuarioDTO verificar(String email, String password){
+    public UsuarioDTO login(String email, String password){
         Optional<Usuario> usuarioOptional = repository.findByEmailAndPassword(email, password);
         if (usuarioOptional.isPresent()){
 
@@ -59,12 +46,24 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public UsuarioDTO registro(Usuario usuario) {
-        if(!repository.existsByEmail(usuario.getEmail())){
-            repository.save(usuario);
-            return verificar(usuario.getEmail(), usuario.getPassword());
+        if(emailvalido(usuario.getEmail())) {
+            if (!repository.existsByEmail(usuario.getEmail())) {
+                repository.save(usuario);
+                return login(usuario.getEmail(), usuario.getPassword());
+            } else {
+                throw new UsuarioNotFoundException("este email ya existe");
+            }
         }else{
-            throw new UsuarioNotFoundException("este email ya existe");
+            throw new UsuarioNotFoundException("debe ingresarse un email valido");
         }
+    }
 
+    public boolean emailvalido(String email){
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(email);
+
+        return mather.find();
     }
 }

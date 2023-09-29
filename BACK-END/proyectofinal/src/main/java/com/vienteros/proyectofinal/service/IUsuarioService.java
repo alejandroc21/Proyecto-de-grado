@@ -9,13 +9,9 @@ public interface IUsuarioService {
 
     List<Usuario> listarTodos();
 
-    void guardarUsuario(Usuario usuario);
-
     Usuario UsuarioPorId(int id);
 
-    boolean verificarUsuario(String nombre, String password);
-
-    UsuarioDTO verificar(String email, String password);
+    UsuarioDTO login(String email, String password);
 
     UsuarioDTO registro(Usuario usuario);
 }

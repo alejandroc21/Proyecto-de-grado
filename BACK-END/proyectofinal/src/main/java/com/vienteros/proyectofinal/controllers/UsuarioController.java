@@ -30,32 +30,15 @@ public class UsuarioController {
         return service.UsuarioPorId(Integer.parseInt(id));
     }
 
-    @PostMapping("/api/registrar")
-    public void guardarUsuario(@RequestBody Usuario usuario){
-        service.guardarUsuario(usuario);
-    }
-
     @PostMapping("/registro")
     public ResponseEntity<UsuarioDTO> registro(@RequestBody Usuario usuario){
         UsuarioDTO usuarioDTO = service.registro(usuario);
         return ResponseEntity.ok(usuarioDTO);
     }
 
-    /*
-    @PostMapping("/loginu")
-    public ResponseEntity<String> login(@RequestBody UsuarioLoginDTO usuarioLoginDTO){
-        boolean logeado = service.verificarUsuario(usuarioLoginDTO.getEmail(), usuarioLoginDTO.getPassword());
-        if(logeado){
-            return ResponseEntity.ok("");
-        }else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("nope");
-        }
-    }*/
-
-
     @PostMapping("/login")
     public ResponseEntity<UsuarioDTO> login(@RequestBody UsuarioLoginDTO usuarioLoginDTO){
-        UsuarioDTO usuarioDTO = service.verificar(usuarioLoginDTO.getEmail(), usuarioLoginDTO.getPassword());
+        UsuarioDTO usuarioDTO = service.login(usuarioLoginDTO.getEmail(), usuarioLoginDTO.getPassword());
         return ResponseEntity.ok(usuarioDTO);
     }
 }
