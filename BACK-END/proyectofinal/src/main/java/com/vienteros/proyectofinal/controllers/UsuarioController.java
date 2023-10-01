@@ -7,7 +7,6 @@ import com.vienteros.proyectofinal.DTO.UsuarioLoginDTO;
 import com.vienteros.proyectofinal.model.Usuario;
 import com.vienteros.proyectofinal.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

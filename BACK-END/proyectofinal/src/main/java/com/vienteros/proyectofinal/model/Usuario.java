@@ -1,6 +1,5 @@
 package com.vienteros.proyectofinal.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +19,5 @@ public class Usuario {
     private String password;
 
     @OneToMany(targetEntity = Proyecto.class, fetch = FetchType.LAZY, mappedBy = "usuario")
-    @JsonIgnore
     private List<Proyecto> proyectos;
 }

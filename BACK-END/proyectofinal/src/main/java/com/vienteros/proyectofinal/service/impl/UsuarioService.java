@@ -27,7 +27,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario UsuarioPorId(int id) {
-        return (Usuario) repository.findById(id).get();
+        return repository.findById(id).get();
     }
 
     public UsuarioDTO login(String email, String password){

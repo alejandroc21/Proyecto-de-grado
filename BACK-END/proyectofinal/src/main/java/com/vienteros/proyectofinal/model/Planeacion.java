@@ -1,12 +1,18 @@
 package com.vienteros.proyectofinal.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Planeacion {
 
     @Id
@@ -17,7 +23,4 @@ public class Planeacion {
     private double gasto;
     private double total;
 
-    @ManyToOne(targetEntity = Proyecto.class)
-    @JoinColumn(name = "id_proyecto")
-    private Proyecto proyecto;
 }
