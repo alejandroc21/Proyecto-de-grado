@@ -24,9 +24,6 @@ public class Proyecto {
     @Column(name = "tiempo_estimado_dd")
     private int diasEstimados;
 
-    @OneToOne(targetEntity = Planeacion.class, cascade = CascadeType.REMOVE)
-    private Planeacion planeaciones;
-
     @OneToMany(targetEntity = Insumo.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
     @JsonIgnore
     private List<Insumo> insumos;

@@ -1,7 +1,6 @@
 package com.vienteros.proyectofinal.DTO;
 
 
-import com.vienteros.proyectofinal.model.Planeacion;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +11,4 @@ public class ProyectoDTO {
     private int id;
     private String nombre;
     private int diasEstimados;
-    private int idPlaneacion;
 }
