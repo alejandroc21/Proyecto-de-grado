@@ -6,23 +6,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
+
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "insumos")
-public class Insumo {
+@Table(name = "ventas")
+public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_insumo")
     private int id;
     private String nombre;
-    private int cantidad;
     private double precio;
+    private int cantidad;
+    private Date fecha;
 
-    @ManyToOne(targetEntity = Proyecto.class)
+    @ManyToOne(targetEntity = Producto.class)
     @JoinColumn(name = "id_proyecto")
     private Proyecto proyecto;
 }

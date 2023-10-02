@@ -1,17 +1,16 @@
 package com.vienteros.proyectofinal.service;
 
+import com.vienteros.proyectofinal.DTO.InsumoDTO;
 import com.vienteros.proyectofinal.model.Insumo;
 
 import java.util.List;
 
 public interface IInsumoService {
-    List<Insumo> listarInsumos();
+    List<Insumo> listarInsumos(InsumoDTO insumoDTO);
 
-    Insumo insumoPorId(int id);
+    Insumo guardarInsumo(InsumoDTO insumoDTO);
 
-    void eliminarInsumo(int id);
+    String eliminarInsumo(InsumoDTO insumoDTO);
 
-
-    void guardarInsumo(Insumo insumo);
-
+    Insumo actualizarInsumo(InsumoDTO insumoDTO);
 }

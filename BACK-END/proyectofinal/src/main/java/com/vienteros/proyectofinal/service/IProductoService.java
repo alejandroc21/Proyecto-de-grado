@@ -1,16 +1,18 @@
 package com.vienteros.proyectofinal.service;
 
+import com.vienteros.proyectofinal.DTO.ProductoDTO;
 import com.vienteros.proyectofinal.model.Producto;
 
 import java.util.List;
 
 public interface IProductoService {
 
-    List<Producto> listarProductos();
 
-    Producto productoPorId(int id);
+    List<Producto> listarProductos(ProductoDTO productoDTO);
 
-    void eliminarProducto(int id);
+    Producto guardarProducto(ProductoDTO productoDTO);
 
-    void guardarProducto(Producto producto);
+    Producto actualizarProducto(ProductoDTO productoDTO);
+
+    String eliminarProducto(ProductoDTO productoDTO);
 }

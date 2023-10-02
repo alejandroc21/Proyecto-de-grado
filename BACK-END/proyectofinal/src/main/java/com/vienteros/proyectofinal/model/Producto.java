@@ -1,12 +1,18 @@
 package com.vienteros.proyectofinal.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "productos")
 public class Producto {
     @Id
@@ -19,7 +25,7 @@ public class Producto {
     private int cantidadInicial;
     @Column(name = "cantidad_final")
     private int cantidadFinal;
-    private double peso;
+    private double precio;
     //@Column(columnDefinition = "DATE")
     private Date fecha;
 

@@ -24,9 +24,9 @@ public class ProyectoController {
         return service.getForId(Integer.parseInt(id));
     }
 
-    @PostMapping("/proyectos")
-    public ResponseEntity<List<Proyecto>> getProyectos(@RequestBody UsuarioDTO usuarioDTO){
-        return ResponseEntity.ok(service.getProyectos(usuarioDTO.getId()));
+    @PostMapping("/listar")
+    public ResponseEntity<List<Proyecto>> getProyectos(@RequestBody ProyectoDTO proyectoDTO){
+        return ResponseEntity.ok(service.getProyectos(proyectoDTO.getIdUsuario()));
     }
 
     @PostMapping("/crear")

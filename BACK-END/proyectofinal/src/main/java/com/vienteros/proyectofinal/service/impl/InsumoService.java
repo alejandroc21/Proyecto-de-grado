@@ -1,6 +1,8 @@
 package com.vienteros.proyectofinal.service.impl;
 
+import com.vienteros.proyectofinal.DTO.InsumoDTO;
 import com.vienteros.proyectofinal.model.Insumo;
+import com.vienteros.proyectofinal.model.Proyecto;
 import com.vienteros.proyectofinal.repository.InsumoRepository;
 import com.vienteros.proyectofinal.service.IInsumoService;
 
@@ -15,23 +17,43 @@ public class InsumoService implements IInsumoService{
     @Autowired
     private InsumoRepository repository;
 
+
     @Override
-    public List<Insumo> listarInsumos() {
-        return (List<Insumo>) repository.findAll();
+    public List<Insumo> listarInsumos(InsumoDTO insumoDTO) {
+        List<Insumo> insumos = repository.findByProyectoId(insumoDTO.getIdProyecto());
+        return insumos;
     }
 
     @Override
-    public Insumo insumoPorId(int id) {
-        return repository.findById(id).get();
+    public Insumo guardarInsumo(InsumoDTO insumoDTO) {
+        Proyecto proyecto = new Proyecto();
+        proyecto.setId(insumoDTO.getIdProyecto());
+        Insumo insumo = Insumo.builder()
+                .nombre(insumoDTO.getNombre())
+                .cantidad(insumoDTO.getCantidad())
+                .precio(insumoDTO.getPrecio())
+                .proyecto(proyecto).build();
+
+        return repository.save(insumo);
     }
 
     @Override
-    public void eliminarInsumo(int id) {
-        repository.deleteById(id);
+    public String eliminarInsumo(InsumoDTO insumoDTO) {
+        repository.deleteById(insumoDTO.getId());
+        return "se elimino el insumo exitosamente";
     }
 
     @Override
-    public void guardarInsumo(Insumo insumo) {
-        repository.save(insumo);
+    public Insumo actualizarInsumo(InsumoDTO insumoDTO) {
+        Proyecto proyecto = new Proyecto();
+        proyecto.setId(insumoDTO.getId());
+        Insumo insumo = Insumo.builder()
+                .id(insumoDTO.getId())
+                .nombre(insumoDTO.getNombre())
+                .cantidad(insumoDTO.getCantidad())
+                .precio(insumoDTO.getPrecio())
+                .proyecto(proyecto).build();
+
+        return repository.save(insumo);
     }
 }

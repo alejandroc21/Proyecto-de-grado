@@ -32,6 +32,11 @@ public class Proyecto {
     @JsonIgnore
     private List<Producto> productos;
 
+
+    @OneToMany(targetEntity = Venta.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @JsonIgnore
+    private List<Venta> ventas;
+
     @ManyToOne(targetEntity = Usuario.class)
     @JoinColumn(name = "id_usuario")
     @JsonIgnore
