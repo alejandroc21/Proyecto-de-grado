@@ -9,6 +9,7 @@ import com.vienteros.proyectofinal.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,45 +20,49 @@ public class ProductoService implements IProductoService{
 
 
     @Override
-    public List<Producto> listarProductos(ProductoDTO productoDTO) {
-        List<Producto> productos = repository.findByProyectoId(productoDTO.getIdProyecto());
-        return productos;
+    public List<ProductoDTO> listarProductos(int idProyecto) {
+        List<Producto> productos = repository.findByProyectoId(idProyecto);
+        List<ProductoDTO> example = new ArrayList<>();
+        return example;
     }
 
     @Override
-    public Producto guardarProducto(ProductoDTO productoDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(productoDTO.getIdProyecto());
-        Producto producto = Producto.builder()
-                .nombre(productoDTO.getNombre())
-                .descripcion(productoDTO.getDescripcion())
-                .cantidadInicial(productoDTO.getCantidadInicial())
-                .cantidadFinal(productoDTO.getCantidadFinal())
-                .precio(productoDTO.getPrecio())
-                .fecha(productoDTO.getFecha())
-                .proyecto(proyecto).build();
-        return repository.save(producto);
+    public ProductoDTO guardarProducto(Producto producto) {
+        Producto product = repository.save(producto);
+        ProductoDTO productoDTO = ProductoDTO.builder()
+                .id(product.getId())
+                .nombre(product.getNombre())
+                .descripcion(product.getDescripcion())
+                .cantidadInicial(product.getCantidadInicial())
+                .cantidadFinal(product.getCantidadFinal())
+                .precio(product.getPrecio())
+                .fecha(product.getFecha())
+                .build();
+
+        return productoDTO;
+
     }
 
     @Override
-    public Producto actualizarProducto(ProductoDTO productoDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(productoDTO.getIdProyecto());
-        Producto producto = Producto.builder()
-                .id(proyecto.getId())
-                .nombre(productoDTO.getNombre())
-                .descripcion(productoDTO.getDescripcion())
-                .cantidadInicial(productoDTO.getCantidadInicial())
-                .cantidadFinal(productoDTO.getCantidadFinal())
-                .precio(productoDTO.getPrecio())
-                .fecha(productoDTO.getFecha())
-                .proyecto(proyecto).build();
-        return repository.save(producto);
+    public ProductoDTO actualizarProducto(Producto producto) {
+        Producto product = repository.save(producto);
+        ProductoDTO productoDTO = ProductoDTO.builder()
+                .id(product.getId())
+                .nombre(product.getNombre())
+                .descripcion(product.getDescripcion())
+                .cantidadInicial(product.getCantidadInicial())
+                .cantidadFinal(product.getCantidadFinal())
+                .precio(product.getPrecio())
+                .fecha(product.getFecha())
+                .build();
+
+        return productoDTO;
     }
 
+
     @Override
-    public String eliminarProducto(ProductoDTO productoDTO) {
-        repository.deleteById(productoDTO.getId());
+    public String eliminarProducto(int id) {
+        repository.deleteById(id);
         return "producto eliminado";
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2023 a las 06:53:02
+-- Tiempo de generación: 04-10-2023 a las 03:46:57
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.34
 
@@ -38,20 +38,6 @@ CREATE TABLE `insumos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planeacion`
---
-
-CREATE TABLE `planeacion` (
-  `id_planeacion` int(11) NOT NULL,
-  `gasto` double NOT NULL,
-  `inversion` double NOT NULL,
-  `total` double NOT NULL,
-  `id_proyecto` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -62,7 +48,7 @@ CREATE TABLE `productos` (
   `descripcion` varchar(255) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  `peso` double NOT NULL,
+  `precio` double NOT NULL,
   `id_proyecto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -75,7 +61,7 @@ CREATE TABLE `productos` (
 CREATE TABLE `proyectos` (
   `id_proyecto` int(11) NOT NULL,
   `tiempo_estimado_dd` int(11) DEFAULT NULL,
-  `tipo` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -92,6 +78,21 @@ CREATE TABLE `usuarios` (
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `precio` double NOT NULL,
+  `id_producto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -102,13 +103,6 @@ CREATE TABLE `usuarios` (
 ALTER TABLE `insumos`
   ADD PRIMARY KEY (`id_insumo`),
   ADD KEY `FKsc3loygdbiljyoa295pc7rbsm` (`id_proyecto`);
-
---
--- Indices de la tabla `planeacion`
---
-ALTER TABLE `planeacion`
-  ADD PRIMARY KEY (`id_planeacion`),
-  ADD KEY `FK16hhanw0408cptle28cgeufuv` (`id_proyecto`);
 
 --
 -- Indices de la tabla `productos`
@@ -131,6 +125,13 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK8gbcwhljqwt6c1gjvr09ipipd` (`id_producto`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -139,12 +140,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `insumos`
   MODIFY `id_insumo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `planeacion`
---
-ALTER TABLE `planeacion`
-  MODIFY `id_planeacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -165,6 +160,12 @@ ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -173,12 +174,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `insumos`
   ADD CONSTRAINT `FKsc3loygdbiljyoa295pc7rbsm` FOREIGN KEY (`id_proyecto`) REFERENCES `proyectos` (`id_proyecto`);
-
---
--- Filtros para la tabla `planeacion`
---
-ALTER TABLE `planeacion`
-  ADD CONSTRAINT `FK16hhanw0408cptle28cgeufuv` FOREIGN KEY (`id_proyecto`) REFERENCES `proyectos` (`id_proyecto`);
 
 --
 -- Filtros para la tabla `productos`
@@ -191,6 +186,12 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `proyectos`
   ADD CONSTRAINT `FK2mxm4r5it9s1tpayg2nxbdxlq` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `FK8gbcwhljqwt6c1gjvr09ipipd` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

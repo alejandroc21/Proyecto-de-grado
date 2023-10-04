@@ -1,11 +1,13 @@
 package com.vienteros.proyectofinal.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class InsumoDTO {
-    private int idProyecto;
+
     private int id;
     private String nombre;
     private int cantidad;

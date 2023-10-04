@@ -8,7 +8,9 @@ import com.vienteros.proyectofinal.service.IProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProyectoService implements IProyectoService {
@@ -17,44 +19,50 @@ public class ProyectoService implements IProyectoService {
     private ProyectoRepository repository;
 
     @Override
-    public Proyecto getForId(int id) {
-        return repository.findById(id).get();
-    }
-
-    @Override
-    public List<Proyecto> getProyectos(int idUsuario) {
+    public List<ProyectoDTO> getProyectos(int idUsuario) {
         List<Proyecto> proyectos = repository.findByUsuarioId(idUsuario);
-        return  proyectos;
+
+        List<ProyectoDTO> proyectosDTO = proyectos.stream().map(proyecto -> {
+            ProyectoDTO proyectoDTO = ProyectoDTO.builder()
+                    .id(proyecto.getId())
+                    .nombre(proyecto.getNombre())
+                    .diasEstimados(proyecto.getDiasEstimados())
+                    .build();
+            return proyectoDTO;
+        }).collect(Collectors.toList());
+
+        return  proyectosDTO;
     }
 
     @Override
-    public Proyecto crearProyecto(ProyectoDTO proyectoDTO) {
-        Usuario usuario = new Usuario();
-        usuario.setId(proyectoDTO.getIdUsuario());
-        Proyecto proyecto = Proyecto.builder()
-                .nombre(proyectoDTO.getNombre())
-                .diasEstimados(proyectoDTO.getDiasEstimados())
-                .usuario(usuario).build();
-        return repository.save(proyecto);
+    public ProyectoDTO guardarProyecto(Proyecto proyecto) {
+        Proyecto project = repository.save(proyecto);
+        ProyectoDTO proyectoDTO = ProyectoDTO.builder()
+                .id(project.getId())
+                .nombre(project.getNombre())
+                .diasEstimados(project.getDiasEstimados())
+                .build();
+        return proyectoDTO;
     }
 
     @Override
-    public Proyecto actulizarProyecto(ProyectoDTO proyectoDTO) {
-        Usuario usuario = new Usuario();
-        usuario.setId(proyectoDTO.getIdUsuario());
-        Proyecto proyecto = Proyecto.builder()
-                .id(proyectoDTO.getId())
-                .nombre(proyectoDTO.getNombre())
-                .diasEstimados(proyectoDTO.getDiasEstimados())
-                .usuario(usuario).build();
-
-        return repository.save(proyecto);
+    public ProyectoDTO actulizarProyecto(Proyecto proyecto) {
+        Proyecto project = repository.save(proyecto);
+        ProyectoDTO proyectoDTO = ProyectoDTO.builder()
+                .id(project.getId())
+                .nombre(project.getNombre())
+                .diasEstimados(project.getDiasEstimados())
+                .build();
+        return proyectoDTO;
     }
 
+
     @Override
-    public String eliminarProyecto(ProyectoDTO proyectoDTO) {
-        repository.deleteById(proyectoDTO.getId());
+    public String eliminarProyecto(int id) {
+        repository.deleteById(id);
         return "Proyecto eliminado";
     }
+
+
 
 }

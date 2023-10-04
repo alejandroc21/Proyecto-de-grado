@@ -17,23 +17,23 @@ public class VentaController {
     @Autowired
     private IVentaService service;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Venta>> listarVentas(@RequestBody VentaDTO ventaDTO){
-        return ResponseEntity.ok(service.listarVentas(ventaDTO));
+    @GetMapping("/listar/{idProyecto}")
+    public ResponseEntity<List<VentaDTO>> listarVentas(@PathVariable int idProyecto){
+        return ResponseEntity.ok(service.listarVentas(idProyecto));
     }
 
     @PostMapping("crear")
-    public ResponseEntity<Venta> crearVenta(@RequestBody VentaDTO ventaDTO){
-        return ResponseEntity.ok(service.crearVenta(ventaDTO));
+    public ResponseEntity<VentaDTO> crearVenta(@RequestBody Venta venta){
+        return ResponseEntity.ok(service.crearVenta(venta));
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Venta> actualizarVenta(@RequestBody VentaDTO ventaDTO){
-        return ResponseEntity.ok(service.actualizarVenta(ventaDTO));
+    public ResponseEntity<VentaDTO> actualizarVenta(@RequestBody Venta venta){
+        return ResponseEntity.ok(service.actualizarVenta(venta));
     }
 
-    @DeleteMapping("/elimiar")
-    public ResponseEntity<String> eliminarVenta(@RequestBody VentaDTO ventaDTO){
-        return ResponseEntity.ok(service.eliminarVenta(ventaDTO));
+    @DeleteMapping("/elimiar/{id}")
+    public ResponseEntity<String> eliminarVenta(@PathVariable int id){
+        return ResponseEntity.ok(service.eliminarVenta(id));
     }
 }

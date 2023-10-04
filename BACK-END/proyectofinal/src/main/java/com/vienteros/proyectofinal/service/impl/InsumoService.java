@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InsumoService implements IInsumoService{
@@ -19,41 +20,36 @@ public class InsumoService implements IInsumoService{
 
 
     @Override
-    public List<Insumo> listarInsumos(InsumoDTO insumoDTO) {
-        List<Insumo> insumos = repository.findByProyectoId(insumoDTO.getIdProyecto());
-        return insumos;
+    public List<InsumoDTO> listarInsumos(int idProyecto) {
+        List<Insumo> insumos = repository.findByProyectoId(idProyecto);
+        List<InsumoDTO> insumosDTO = insumos.stream().map(insumo -> {
+            InsumoDTO insumoDTO = InsumoDTO.builder()
+                    .id(insumo.getId())
+                    .nombre(insumo.getNombre())
+                    .cantidad(insumo.getCantidad())
+                    .precio(insumo.getPrecio())
+                    .build();
+            return insumoDTO;
+        }).collect(Collectors.toList());
+        return insumosDTO;
     }
 
     @Override
-    public Insumo guardarInsumo(InsumoDTO insumoDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(insumoDTO.getIdProyecto());
-        Insumo insumo = Insumo.builder()
-                .nombre(insumoDTO.getNombre())
-                .cantidad(insumoDTO.getCantidad())
-                .precio(insumoDTO.getPrecio())
-                .proyecto(proyecto).build();
-
-        return repository.save(insumo);
+    public InsumoDTO guardarInsumo(Insumo insumo) {
+        return null;
     }
 
     @Override
-    public String eliminarInsumo(InsumoDTO insumoDTO) {
-        repository.deleteById(insumoDTO.getId());
+    public InsumoDTO actualizarInsumo(Insumo insumo) {
+        return null;
+    }
+
+
+    @Override
+    public String eliminarInsumo(int id) {
+        repository.deleteById(id);
         return "se elimino el insumo exitosamente";
     }
 
-    @Override
-    public Insumo actualizarInsumo(InsumoDTO insumoDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(insumoDTO.getId());
-        Insumo insumo = Insumo.builder()
-                .id(insumoDTO.getId())
-                .nombre(insumoDTO.getNombre())
-                .cantidad(insumoDTO.getCantidad())
-                .precio(insumoDTO.getPrecio())
-                .proyecto(proyecto).build();
 
-        return repository.save(insumo);
-    }
 }

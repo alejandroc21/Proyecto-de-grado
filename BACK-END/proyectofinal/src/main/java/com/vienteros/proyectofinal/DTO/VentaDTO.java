@@ -1,13 +1,19 @@
 package com.vienteros.proyectofinal.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 import java.sql.Date;
 
-@Getter @Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class VentaDTO {
-    private int idProyecto;
+
     private int id;
     private String nombre;
     private double precio;

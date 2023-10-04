@@ -11,9 +11,6 @@ import java.sql.Date;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "ventas")
 public class Venta {
     @Id
@@ -25,6 +22,6 @@ public class Venta {
     private Date fecha;
 
     @ManyToOne(targetEntity = Producto.class)
-    @JoinColumn(name = "id_proyecto")
-    private Proyecto proyecto;
+    @JoinColumn(name = "id_producto")
+    private Producto producto;
 }

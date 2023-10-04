@@ -6,11 +6,11 @@ import com.vienteros.proyectofinal.model.Venta;
 import java.util.List;
 
 public interface IVentaService {
-    List<Venta> listarVentas(VentaDTO ventaDTO);
+    List<VentaDTO> listarVentas(int idProyecto);
 
-    Venta crearVenta(VentaDTO ventaDTO);
+    VentaDTO crearVenta(Venta venta);
 
-    Venta actualizarVenta(VentaDTO ventaDTO);
+    VentaDTO actualizarVenta(Venta venta);
 
-    String eliminarVenta(VentaDTO ventaDTO);
+    String eliminarVenta(int id);
 }

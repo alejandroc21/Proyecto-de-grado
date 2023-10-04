@@ -8,11 +8,11 @@ import java.util.List;
 public interface IProductoService {
 
 
-    List<Producto> listarProductos(ProductoDTO productoDTO);
+    List<ProductoDTO> listarProductos(int idProyecto);
 
-    Producto guardarProducto(ProductoDTO productoDTO);
+    ProductoDTO guardarProducto(Producto producto);
 
-    Producto actualizarProducto(ProductoDTO productoDTO);
+    ProductoDTO actualizarProducto(Producto producto);
 
-    String eliminarProducto(ProductoDTO productoDTO);
+    String eliminarProducto(int id);
 }

@@ -1,5 +1,6 @@
 package com.vienteros.proyectofinal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,4 +34,8 @@ public class Producto {
     @ManyToOne(targetEntity = Proyecto.class)
     @JoinColumn(name = "id_proyecto")
     private Proyecto proyecto;
+
+    @OneToMany(targetEntity = Venta.class, fetch = FetchType.LAZY, mappedBy = "producto")
+    @JsonIgnore
+    private List<Venta> ventas;
 }

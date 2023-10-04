@@ -18,24 +18,24 @@ public class InsumoController {
     @Autowired
     private IInsumoService service;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Insumo>> listarInsumos(@RequestBody InsumoDTO insumoDTO){
-        return ResponseEntity.ok(service.listarInsumos(insumoDTO));
+    @GetMapping("/listar/{idProyecto}")
+    public ResponseEntity<List<InsumoDTO>> listarInsumos(@PathVariable int idProyecto){
+        return ResponseEntity.ok(service.listarInsumos(idProyecto));
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Insumo> guardarInsumo(@RequestBody InsumoDTO insumoDTO){
-        return ResponseEntity.ok(service.guardarInsumo(insumoDTO));
+    public ResponseEntity<InsumoDTO> guardarInsumo(@RequestBody Insumo insumo){
+        return ResponseEntity.ok(service.guardarInsumo(insumo));
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Insumo> actualizarInsumo(@RequestBody InsumoDTO insumoDTO){
-        return ResponseEntity.ok(service.actualizarInsumo(insumoDTO));
+    public ResponseEntity<InsumoDTO> actualizarInsumo(@RequestBody Insumo insumo){
+        return ResponseEntity.ok(service.actualizarInsumo(insumo));
     }
 
-    @DeleteMapping("/elimiar")
-    public ResponseEntity<String> eliminarInsumo(@RequestBody InsumoDTO insumoDTO){
-        return ResponseEntity.ok(service.eliminarInsumo(insumoDTO));
-    }
 
+    @DeleteMapping("/elimiar/{id}")
+    public ResponseEntity<String> eliminarInsumo(@PathVariable int id){
+        return ResponseEntity.ok(service.eliminarInsumo(id));
+    }
 }

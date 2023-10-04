@@ -6,11 +6,12 @@ import com.vienteros.proyectofinal.model.Insumo;
 import java.util.List;
 
 public interface IInsumoService {
-    List<Insumo> listarInsumos(InsumoDTO insumoDTO);
 
-    Insumo guardarInsumo(InsumoDTO insumoDTO);
+    List<InsumoDTO> listarInsumos(int idProyecto);
 
-    String eliminarInsumo(InsumoDTO insumoDTO);
+    InsumoDTO guardarInsumo(Insumo insumo);
 
-    Insumo actualizarInsumo(InsumoDTO insumoDTO);
+    InsumoDTO actualizarInsumo(Insumo insumo);
+
+    String eliminarInsumo(int id);
 }

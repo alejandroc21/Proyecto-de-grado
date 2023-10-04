@@ -1,7 +1,6 @@
 package com.vienteros.proyectofinal.controllers;
 
 import com.vienteros.proyectofinal.DTO.ProyectoDTO;
-import com.vienteros.proyectofinal.DTO.UsuarioDTO;
 import com.vienteros.proyectofinal.model.Proyecto;
 import com.vienteros.proyectofinal.service.IProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,29 +18,25 @@ public class ProyectoController {
     @Autowired
     private IProyectoService service;
 
-    @GetMapping("/{id}")
-    public Proyecto getForId(@PathVariable String id){
-        return service.getForId(Integer.parseInt(id));
+    @GetMapping("/listar/{idUsuario}")
+    public ResponseEntity<List<ProyectoDTO>> getProyectos(@PathVariable int idUsuario){
+        return ResponseEntity.ok(service.getProyectos(idUsuario));
     }
 
-    @PostMapping("/listar")
-    public ResponseEntity<List<Proyecto>> getProyectos(@RequestBody ProyectoDTO proyectoDTO){
-        return ResponseEntity.ok(service.getProyectos(proyectoDTO.getIdUsuario()));
-    }
 
     @PostMapping("/crear")
-    public ResponseEntity<Proyecto> crearProyecto(@RequestBody ProyectoDTO proyectoDTO){
-        return ResponseEntity.ok(service.crearProyecto(proyectoDTO));
+    public ResponseEntity<ProyectoDTO> guardarProyecto(@RequestBody Proyecto proyecto){
+        return  ResponseEntity.ok(service.guardarProyecto(proyecto));
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Proyecto> actualizarProyecto(@RequestBody ProyectoDTO proyectoDTO){
-        return ResponseEntity.ok(service.actulizarProyecto(proyectoDTO));
+    public ResponseEntity<ProyectoDTO> actualizarProyecto(@RequestBody Proyecto proyecto){
+        return ResponseEntity.ok(service.actulizarProyecto(proyecto));
     }
 
-    @DeleteMapping("/eliminar")
-    public ResponseEntity<String> eliminarProyecto(@RequestBody ProyectoDTO proyectoDTO){
-        return ResponseEntity.ok(service.eliminarProyecto(proyectoDTO));
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarProyecto(@PathVariable int  id){
+        return ResponseEntity.ok(service.eliminarProyecto(id));
     }
 
 }

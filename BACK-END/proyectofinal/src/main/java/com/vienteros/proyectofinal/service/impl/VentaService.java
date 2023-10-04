@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VentaService implements IVentaService {
@@ -17,41 +18,48 @@ public class VentaService implements IVentaService {
     private VentaRepository repository;
 
     @Override
-    public List<Venta> listarVentas(VentaDTO ventaDTO) {
-        List<Venta> ventas = repository.findByProyectoId(ventaDTO.getIdProyecto());
-        return ventas;
+    public List<VentaDTO> listarVentas(int idProyecto) {
+        List<Venta> ventas = repository.findAllByProductoProyectoId(idProyecto);
+        List<VentaDTO> ventasDTO = ventas.stream().map(venta -> {
+            VentaDTO ventaDTO = VentaDTO.builder()
+                    .id(venta.getId())
+                    .nombre(venta.getNombre())
+                    .precio(venta.getPrecio())
+                    .cantidad(venta.getCantidad())
+                    .fecha(venta.getFecha()).build();
+            return ventaDTO;
+        }).collect(Collectors.toList());
+        return ventasDTO;
     }
 
     @Override
-    public Venta crearVenta(VentaDTO ventaDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(ventaDTO.getIdProyecto());
-        Venta venta = Venta.builder()
-                .nombre(ventaDTO.getNombre())
-                .precio(ventaDTO.getPrecio())
-                .cantidad(ventaDTO.getCantidad())
-                .fecha(ventaDTO.getFecha())
-                .proyecto(proyecto).build();
-        return repository.save(venta);
+    public VentaDTO crearVenta(Venta venta) {
+        Venta ventatmp = repository.save(venta);
+        VentaDTO ventaDTO = VentaDTO.builder()
+                .id(ventatmp.getId())
+                .nombre(ventatmp.getNombre())
+                .precio(venta.getPrecio())
+                .cantidad(venta.getCantidad())
+                .fecha(venta.getFecha()).build();
+        return ventaDTO;
     }
 
     @Override
-    public Venta actualizarVenta(VentaDTO ventaDTO) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId(ventaDTO.getIdProyecto());
-        Venta venta = Venta.builder()
-                .id(ventaDTO.getId())
-                .nombre(ventaDTO.getNombre())
-                .precio(ventaDTO.getPrecio())
-                .cantidad(ventaDTO.getCantidad())
-                .fecha(ventaDTO.getFecha())
-                .proyecto(proyecto).build();
-        return repository.save(venta);
+    public VentaDTO actualizarVenta(Venta venta) {
+        Venta ventatmp = repository.save(venta);
+        VentaDTO ventaDTO = VentaDTO.builder()
+                .id(ventatmp.getId())
+                .nombre(ventatmp.getNombre())
+                .precio(venta.getPrecio())
+                .cantidad(venta.getCantidad())
+                .fecha(venta.getFecha()).build();
+        return ventaDTO;
     }
 
+
     @Override
-    public String eliminarVenta(VentaDTO ventaDTO) {
-        repository.deleteById(ventaDTO.getId());
+    public String eliminarVenta(int id) {
+        repository.deleteById(id);
         return "venta eliminada";
     }
 }

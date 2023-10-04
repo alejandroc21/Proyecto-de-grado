@@ -2,18 +2,18 @@ package com.vienteros.proyectofinal.service;
 
 import com.vienteros.proyectofinal.DTO.ProyectoDTO;
 import com.vienteros.proyectofinal.model.Proyecto;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 public interface IProyectoService {
-    Proyecto getForId(int id);
 
-    List<Proyecto> getProyectos(int idUsuario);
+    List<ProyectoDTO> getProyectos(int idUsuario);
 
+    ProyectoDTO guardarProyecto(Proyecto proyecto);
 
-    Proyecto crearProyecto(ProyectoDTO proyectoDTO);
+    ProyectoDTO actulizarProyecto(Proyecto proyecto);
 
-    Proyecto actulizarProyecto(ProyectoDTO proyectoDTO);
+    String eliminarProyecto(int id);
 
-    String eliminarProyecto(ProyectoDTO proyectoDTO);
 }

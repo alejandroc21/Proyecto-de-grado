@@ -17,24 +17,24 @@ public class ProductoController {
     @Autowired
     private IProductoService service;
 
-    @GetMapping("/listar")
-    public ResponseEntity<List<Producto>> listarProductos(@RequestBody ProductoDTO productoDTO){
-        return ResponseEntity.ok(service.listarProductos(productoDTO));
+    @GetMapping("/listar/{idProyecto}")
+    public ResponseEntity<List<ProductoDTO>> listarProductos(@PathVariable int idProyecto){
+        return ResponseEntity.ok(service.listarProductos(idProyecto));
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Producto> guardarProducto(@RequestBody ProductoDTO productoDTO){
-        return ResponseEntity.ok(service.guardarProducto(productoDTO));
+    public ResponseEntity<ProductoDTO> guardarProducto(@RequestBody Producto producto){
+        return ResponseEntity.ok(service.guardarProducto(producto));
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Producto> actualizarProducto(@RequestBody ProductoDTO productoDTO){
-        return ResponseEntity.ok(service.actualizarProducto(productoDTO));
+    public ResponseEntity<ProductoDTO> actualizarProducto(@RequestBody Producto producto){
+        return ResponseEntity.ok(service.actualizarProducto(producto));
     }
 
-    @DeleteMapping("/eliminar")
-    public ResponseEntity<String> eliminarProducto(@RequestBody ProductoDTO productoDTO){
-        return ResponseEntity.ok(service.eliminarProducto(productoDTO));
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarProducto(@PathVariable int id){
+        return ResponseEntity.ok(service.eliminarProducto(id));
     }
 
 

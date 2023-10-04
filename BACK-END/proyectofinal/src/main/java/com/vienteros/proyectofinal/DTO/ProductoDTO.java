@@ -1,14 +1,16 @@
 package com.vienteros.proyectofinal.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
+
 import java.sql.Date;
 
-@Getter @Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProductoDTO {
-    private int idProyecto;
+
     private int id;
     private String nombre;
     private String descripcion;
