@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { PanelRoutingModule } from './panel-routing.module';
 import { PanelIndexComponent } from './panel-index/panel-index.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    PanelIndexComponent
+    PanelIndexComponent,
   ],
   imports: [
     CommonModule,
     PanelRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class PanelModule { }

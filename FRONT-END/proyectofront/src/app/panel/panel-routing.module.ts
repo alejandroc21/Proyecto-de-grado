@@ -4,10 +4,8 @@ import { PanelIndexComponent } from './panel-index/panel-index.component';
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      {path: '', component: PanelIndexComponent}
-    ]
+    path: '', component: PanelIndexComponent,
+    children: []
   }
 ];
 

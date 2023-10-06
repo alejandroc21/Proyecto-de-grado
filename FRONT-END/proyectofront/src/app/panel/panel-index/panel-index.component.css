@@ -1,0 +1,30 @@
+
+.container{
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto;
+    height: 90vh;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 60px auto;
+}
+ aside, .router{
+    padding: 0px;
+    border-radius: 15px;
+    background-color: #191724;
+}
+
+header{
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+.router{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    
+}
+.image{
+    height: auto;width:auto; margin: -13px 0; padding: 20px 0;
+}
