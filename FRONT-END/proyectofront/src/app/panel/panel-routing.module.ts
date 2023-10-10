@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PanelIndexComponent } from './panel-index/panel-index.component';
+import { ProyectosComponent } from './proyectos/proyectos.component';
+import { GestionComponent } from './gestion/gestion.component';
+import { InventarioComponent } from './inventario/inventario.component';
 
 const routes: Routes = [
   {
     path: '', component: PanelIndexComponent,
-    children: []
-  }
+    children: [
+      {path: 'proyectos', component: ProyectosComponent},
+      {path: 'gestion', component: GestionComponent},
+      {path: 'inventario', component: InventarioComponent},
+      {path: '**', redirectTo:'proyectos'}
+    ]
+  },
+  
+
 ];
 
 @NgModule({

@@ -9,7 +9,8 @@ const routes: Routes = [
  {
   path: 'panel',
   loadChildren: () => import('./panel/panel.module').then(m => m.PanelModule)
- }
+ },
+ {path: '**', redirectTo:''}
 ];
 
 @NgModule({
