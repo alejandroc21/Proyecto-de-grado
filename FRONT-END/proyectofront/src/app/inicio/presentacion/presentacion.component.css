@@ -1,0 +1,53 @@
+main {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-top: 80px;
+    background-image: url(/images/pexels-photo-3777622.jpeg);
+}
+
+
+.product-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-images img {
+    max-width: 100%;
+}
+
+/* Estilo de las otras secciones (producto, servicio, contacto) */
+section {
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Estilo de títulos */
+h1, h2 {
+    font-size: 36px;
+    color: #333;
+}
+
+/* Estilo de párrafos */
+p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Estilo del logotipo */
+.logo img {
+    max-width: 100px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    
+  }
