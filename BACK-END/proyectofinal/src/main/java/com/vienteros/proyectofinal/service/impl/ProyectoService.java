@@ -26,7 +26,7 @@ public class ProyectoService implements IProyectoService {
             ProyectoDTO proyectoDTO = ProyectoDTO.builder()
                     .id(proyecto.getId())
                     .nombre(proyecto.getNombre())
-                    .diasEstimados(proyecto.getDiasEstimados())
+                    .descripcion(proyecto.getDescripcion())
                     .build();
             return proyectoDTO;
         }).collect(Collectors.toList());
@@ -40,7 +40,7 @@ public class ProyectoService implements IProyectoService {
         ProyectoDTO proyectoDTO = ProyectoDTO.builder()
                 .id(project.getId())
                 .nombre(project.getNombre())
-                .diasEstimados(project.getDiasEstimados())
+                .descripcion(proyecto.getDescripcion())
                 .build();
         return proyectoDTO;
     }
@@ -51,7 +51,7 @@ public class ProyectoService implements IProyectoService {
         ProyectoDTO proyectoDTO = ProyectoDTO.builder()
                 .id(project.getId())
                 .nombre(project.getNombre())
-                .diasEstimados(project.getDiasEstimados())
+                .descripcion(proyecto.getDescripcion())
                 .build();
         return proyectoDTO;
     }

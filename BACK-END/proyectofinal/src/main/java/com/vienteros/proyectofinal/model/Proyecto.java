@@ -18,8 +18,7 @@ public class Proyecto {
     @Column(name = "id_proyecto")
     private int id;
     private String nombre;
-    @Column(name = "tiempo_estimado_dd")
-    private int diasEstimados;
+    private String descripcion;
 
     @OneToMany(targetEntity = Insumo.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
     @JsonIgnore

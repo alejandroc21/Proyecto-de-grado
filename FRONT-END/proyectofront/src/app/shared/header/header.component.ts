@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/auth/login.service';
-import { Usuario } from 'src/app/services/auth/usuario';
+import { Usuario } from 'src/app/models/usuario';
+import { ProyectoService } from 'src/app/services/proyectos/proyecto.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { Usuario } from 'src/app/services/auth/usuario';
 export class HeaderComponent implements OnInit{
   //userLoginOn:boolean=false;
   userData?:Usuario;
-  constructor(private loginservice: LoginService){
+  constructor(private proyectoService: ProyectoService){
 
   }
   
@@ -21,19 +21,21 @@ export class HeaderComponent implements OnInit{
     //     this.userLoginOn=userLoginOn;
     //   }
     // });
-    this.loginservice.CurrentUserData.subscribe({
-      next:(userData)=>{
-        this.userData=userData;
-      }
-    });
+    // this.loginservice.CurrentUserData.subscribe({
+    //   next:(userData)=>{
+    //     this.userData=userData;
+    //   }
+    // });
 
-    this.prueba();
+    this.userData=this.proyectoService.getUsuarioData();
+
+    // this.prueba();
   }
 
-  prueba(){
-    const userDataString = localStorage.getItem('userData');
-    if (userDataString) {
-      this.userData = JSON.parse(userDataString);
-    }
-  }
+  // prueba(){
+  //   const userDataString = localStorage.getItem('userData');
+  //   if (userDataString) {
+  //     this.userData = JSON.parse(userDataString);
+  //   }
+  // }
 }

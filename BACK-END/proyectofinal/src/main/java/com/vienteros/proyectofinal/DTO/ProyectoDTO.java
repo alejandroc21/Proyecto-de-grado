@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class ProyectoDTO {
     private int id;
     private String nombre;
-    private int diasEstimados;
+    private String descripcion;
 }
