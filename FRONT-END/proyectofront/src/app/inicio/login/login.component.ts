@@ -12,7 +12,7 @@ import { LoginRequest } from 'src/app/models/loginRequest';
 export class LoginComponent  {
   loginError: string = "";
   loginForm=this.formBuilder.group({
-    email:['alex@gmail.com',[Validators.required, Validators.email]],
+    email:['',[Validators.required, Validators.email]],
     password:['', Validators.required],
   })
   constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginService){}
