@@ -1,0 +1,32 @@
+<div class="insumos">
+  <div class="marco">
+    <h1>Insumo</h1>
+    <button type="button">+</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let insumo of insumos">
+      <tr>
+        <td>{{insumo.id}}</td>
+        <td>{{insumo.nombre}}</td>
+        <td>{{insumo.precio}}</td>
+        <td>{{insumo.cantidad}}</td>
+        <td>{{insumo.fecha}}</td>
+        <td>{{insumo.precio*insumo.cantidad}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -28,6 +28,7 @@ public class InsumoService implements IInsumoService{
                     .nombre(insumo.getNombre())
                     .cantidad(insumo.getCantidad())
                     .precio(insumo.getPrecio())
+                    .fecha(insumo.getFecha())
                     .build();
             return insumoDTO;
         }).collect(Collectors.toList());
@@ -36,12 +37,29 @@ public class InsumoService implements IInsumoService{
 
     @Override
     public InsumoDTO guardarInsumo(Insumo insumo) {
-        return null;
+        Insumo insum = repository.save(insumo);
+        InsumoDTO insumoDTO = InsumoDTO.builder()
+                .id(insum.getId())
+                .nombre(insum.getNombre())
+                .cantidad(insum.getCantidad())
+                .precio(insum.getPrecio())
+                .fecha(insum.getFecha())
+                .build();
+        return insumoDTO;
+
     }
 
     @Override
     public InsumoDTO actualizarInsumo(Insumo insumo) {
-        return null;
+        Insumo insum = repository.save(insumo);
+        InsumoDTO insumoDTO = InsumoDTO.builder()
+                .id(insum.getId())
+                .nombre(insum.getNombre())
+                .cantidad(insum.getCantidad())
+                .precio(insum.getPrecio())
+                .fecha(insum.getFecha())
+                .build();
+        return insumoDTO;
     }
 
 

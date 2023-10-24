@@ -1,0 +1,66 @@
+.marco {
+    display: flex;
+    background-color: blueviolet;
+  }
+  
+  h1 {
+    margin: 3px auto 0px 10px;
+  }
+  
+  button {
+    margin: 2px 10px 0px 0px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  thead th {
+    background-color: blueviolet;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+  
+    position: sticky; /* make the table heads sticky */
+    top: -1px;
+  }
+  tbody {
+    overflow: auto;
+  }
+  
+  .ventas {
+    background-color: blueviolet;
+    height: 115px;
+    border-radius: 0px 0px 15px 15px;
+    overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+  }
+  
+
+  /* SCROLL */
+  /* width */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    
+    /* linea blanca de fondo */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

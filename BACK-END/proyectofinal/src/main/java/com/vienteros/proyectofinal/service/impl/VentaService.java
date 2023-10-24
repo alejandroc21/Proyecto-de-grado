@@ -23,7 +23,7 @@ public class VentaService implements IVentaService {
         List<VentaDTO> ventasDTO = ventas.stream().map(venta -> {
             VentaDTO ventaDTO = VentaDTO.builder()
                     .id(venta.getId())
-                    .nombre(venta.getNombre())
+                    .nombre(venta.getProducto().getNombre())
                     .precio(venta.getPrecio())
                     .cantidad(venta.getCantidad())
                     .fecha(venta.getFecha()).build();

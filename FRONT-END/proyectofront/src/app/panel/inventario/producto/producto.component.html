@@ -1,0 +1,36 @@
+<div class="productos">
+    <div class="marco">
+      <h1>Producto</h1>
+      <button type="button">+</button>
+    </div>
+    <table>
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>descripción</th>
+        <th>Precio</th>
+        <th>Inicial</th>
+        <th>Final</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let producto of productos">
+      <tr>
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.cantidadInicial}}</td>
+        <td>{{producto.cantidadFinal}}</td>
+        <td>{{producto.fecha}}</td>
+        <td>{{producto.precio*producto.cantidadFinal}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>

@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { GestionComponent } from './gestion/gestion.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { ProductoComponent } from './inventario/producto/producto.component';
+import { InsumoComponent } from './inventario/insumo/insumo.component';
+import { VentaComponent } from './inventario/venta/venta.component';
 
 
 @NgModule({
@@ -16,6 +19,7 @@ import { InventarioComponent } from './inventario/inventario.component';
     ProyectosComponent,
     GestionComponent,
     InventarioComponent,
+    
   ],
   imports: [
     CommonModule,

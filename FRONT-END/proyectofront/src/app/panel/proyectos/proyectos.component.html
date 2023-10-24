@@ -1,16 +1,19 @@
-
 <form [formGroup]="proyectoForm">
-    <label for="nombre">Nombre:</label>
-    <input formControlName="nombre" type="text" id="nombre">
-    <label for="descripcion">Descripción:</label>
-    <input formControlName="descripcion" type="text" id="descripcion">
-    <button type="submit" (click)="botonProyecto()" >ADD</button>
+  <label for="nombre">Nombre:</label>
+  <input formControlName="nombre" type="text" id="nombre" />
+  <label for="descripcion">Descripción:</label>
+  <input formControlName="descripcion" type="text" id="descripcion" />
+  <button type="submit" (click)="botonProyecto()">ADD</button>
 </form>
 
 <div class="proyecto" *ngFor="let proyecto of proyectos">
-    <h1>{{proyecto.nombre}}</h1>
-    <h1>{{proyecto.descripcion}}</h1>
-    <button type="button" (click)="selectEditProyecto(proyecto)">editar</button>
-    <button type="button" (click)="eliminarProyecto(proyecto.id)">eliminar</button>
+  <h1>{{ proyecto.nombre }}</h1>
+  <h1>{{ proyecto.descripcion }}</h1>
+  <button type="button" (click)="selectEditProyecto(proyecto)">editar</button>
+  <button type="button" (click)="eliminarProyecto(proyecto.id)">
+    eliminar
+  </button>
 </div>
-
+<div class="vacio" *ngIf="proyectos.length === 0">
+  <h1>Aún no tienes ningun proyecto</h1>
+</div>

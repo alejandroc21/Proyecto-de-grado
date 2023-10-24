@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { NavInventarioComponent } from './navInventario/nav-inventario.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NavbarComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    NavInventarioComponent,
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     NavbarComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    NavInventarioComponent
   ]
 })
 export class SharedModule { }

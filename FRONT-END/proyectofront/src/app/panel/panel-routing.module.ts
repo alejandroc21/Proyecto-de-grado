@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {path: 'proyectos', component: ProyectosComponent},
       {path: 'gestion', component: GestionComponent},
-      {path: 'inventario', component: InventarioComponent},
+      {path: 'inventario', loadChildren: ()=>import('./inventario/inventario.module').then(m=>m.InventarioModule)},
       {path: '**', redirectTo:'proyectos'}
     ]
   },

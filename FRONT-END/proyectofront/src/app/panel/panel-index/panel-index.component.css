@@ -6,7 +6,7 @@
     height: 90vh;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     grid-template-rows: 60px auto;
 }
  aside, .router{
@@ -26,5 +26,8 @@ header{
     
 }
 .image{
-    height: auto;width:auto; margin: -13px 0; padding: 20px 0;
+    height: auto;
+    width:auto; 
+    margin: -13px 0; 
+    padding: 20px 0;
 }

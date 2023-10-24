@@ -28,14 +28,6 @@ export class HeaderComponent implements OnInit{
     // });
 
     this.userData=this.proyectoService.getUsuarioData();
-
-    // this.prueba();
   }
 
-  // prueba(){
-  //   const userDataString = localStorage.getItem('userData');
-  //   if (userDataString) {
-  //     this.userData = JSON.parse(userDataString);
-  //   }
-  // }
 }

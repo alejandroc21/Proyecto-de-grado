@@ -2,6 +2,8 @@ package com.vienteros.proyectofinal.DTO;
 
 import lombok.*;
 
+import java.sql.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,4 +14,5 @@ public class InsumoDTO {
     private String nombre;
     private int cantidad;
     private double precio;
+    private Date fecha;
 }

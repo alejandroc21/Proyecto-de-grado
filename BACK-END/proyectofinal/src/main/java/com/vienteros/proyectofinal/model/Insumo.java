@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -21,6 +22,7 @@ public class Insumo {
     private String nombre;
     private int cantidad;
     private double precio;
+    private Date fecha;
 
     @ManyToOne(targetEntity = Proyecto.class)
     @JoinColumn(name = "id_proyecto")

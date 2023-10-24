@@ -1,0 +1,29 @@
+.vacio {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: aliceblue;
+  margin-top: 25px;
+}
+
+.proyecto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 95%;
+  height: 70px;
+  margin: 10px auto;
+  border-radius: 15px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+h1 {
+  pointer-events: none;
+  font-size: 17px;
+}
+
+.proyecto:focus {
+  background: gray;
+  color: white;
+}

@@ -79,9 +79,6 @@ export class ProyectosComponent implements OnInit{
         descripcion:''
       });
     }
-    
-    console.log(this.selectProyecto)
-    console.log(this.proyectoForm.value);
   }
 
   eliminarProyecto(idProyecto:number){

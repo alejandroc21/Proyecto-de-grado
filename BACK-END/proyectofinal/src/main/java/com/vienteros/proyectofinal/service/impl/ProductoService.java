@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductoService implements IProductoService{
@@ -22,8 +23,19 @@ public class ProductoService implements IProductoService{
     @Override
     public List<ProductoDTO> listarProductos(int idProyecto) {
         List<Producto> productos = repository.findByProyectoId(idProyecto);
-        List<ProductoDTO> example = new ArrayList<>();
-        return example;
+        List<ProductoDTO> productosDTO = productos.stream().map(producto->{
+            ProductoDTO productoDTO = ProductoDTO.builder()
+                    .id(producto.getId())
+                    .nombre(producto.getNombre())
+                    .descripcion(producto.getDescripcion())
+                    .cantidadInicial(producto.getCantidadInicial())
+                    .cantidadFinal(producto.getCantidadFinal())
+                    .precio(producto.getPrecio())
+                    .fecha(producto.getFecha())
+                    .build();
+            return productoDTO;
+        }).collect(Collectors.toList());
+        return productosDTO;
     }
 
     @Override
