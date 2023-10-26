@@ -1,8 +1,19 @@
-<div class="productos">
-    <div class="marco">
-      <h1>Producto</h1>
-      <button type="button">+</button>
-    </div>
+<main>
+  <form [formGroup]="productoForm">
+    <input formControlName="nombre" type="text" placeholder="nombre">
+    <input formControlName="descripcion" type="text" placeholder="descripcion">
+    <input formControlName="precio" type="number" placeholder="precio">
+    <input formControlName="cantidadFinal" type="number" placeholder="cantidad">
+    <input formControlName="fecha" type="date" placeholder="fecha">
+    <button type="submit" (click)="botonProducto()">Ingresar</button>
+
+  </form>
+  <div class="marco">
+    <h1>Producto</h1>
+    <button type="button">+</button>
+  </div>
+  <div class="productos">
+    
     <table>
       <thead>
       <tr>
@@ -10,8 +21,7 @@
         <th>Nombre</th>
         <th>descripción</th>
         <th>Precio</th>
-        <th>Inicial</th>
-        <th>Final</th>
+        <th>Cantidad</th>
         <th>Fecha</th>
         <th>Total</th>
         <th>Editar</th>
@@ -24,13 +34,13 @@
         <td>{{producto.nombre}}</td>
         <td>{{producto.descripcion}}</td>
         <td>{{producto.precio}}</td>
-        <td>{{producto.cantidadInicial}}</td>
         <td>{{producto.cantidadFinal}}</td>
         <td>{{producto.fecha}}</td>
         <td>{{producto.precio*producto.cantidadFinal}}</td>
-        <td></td>
-        <td></td>
+        <td><button type="button" (click)="selectEdithProducto(producto)">editar</button></td>
+          <td><button type="button" (click)="eliminarProducto(producto.id)">borrar</button></td>
       </tr>
     </tbody>
     </table>
   </div>
+</main>

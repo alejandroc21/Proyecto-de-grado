@@ -4,9 +4,10 @@ import { ProductoComponent } from "./producto/producto.component";
 import { InsumoComponent } from "./insumo/insumo.component";
 import { VentaComponent } from "./venta/venta.component";
 import { InventarioRoutingModule } from "./inventario-routing.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [ProductoComponent, InsumoComponent, VentaComponent],
-  imports: [CommonModule, InventarioRoutingModule],
+  imports: [CommonModule, InventarioRoutingModule,ReactiveFormsModule],
 })
 export class InventarioModule {}

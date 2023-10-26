@@ -21,7 +21,6 @@ export class ProyectoService {
     const userDataString = localStorage.getItem('userData');
     if (userDataString) {
       this.userData = JSON.parse(userDataString);
-      console.log(this.userData);
     }
     return this.userData;
   }

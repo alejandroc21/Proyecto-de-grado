@@ -35,7 +35,7 @@ public class Producto {
     @JoinColumn(name = "id_proyecto")
     private Proyecto proyecto;
 
-    @OneToMany(targetEntity = Venta.class, fetch = FetchType.LAZY, mappedBy = "producto")
+    @OneToMany(targetEntity = Venta.class, cascade = CascadeType.REMOVE, mappedBy = "producto")
     @JsonIgnore
     private List<Venta> ventas;
 }

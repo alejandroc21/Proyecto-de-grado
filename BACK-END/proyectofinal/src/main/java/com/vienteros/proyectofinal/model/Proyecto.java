@@ -20,11 +20,11 @@ public class Proyecto {
     private String nombre;
     private String descripcion;
 
-    @OneToMany(targetEntity = Insumo.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @OneToMany(targetEntity = Insumo.class, cascade = CascadeType.REMOVE, mappedBy = "proyecto")
     @JsonIgnore
     private List<Insumo> insumos;
 
-    @OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "proyecto")
+    @OneToMany(targetEntity = Producto.class, cascade = CascadeType.REMOVE, mappedBy = "proyecto")
     @JsonIgnore
     private List<Producto> productos;
 

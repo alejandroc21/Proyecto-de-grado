@@ -1,32 +1,43 @@
-<div class="insumos">
+<main>
+  <form [formGroup]="insumoForm">
+    <input formControlName="nombre" type="text" placeholder="Nombre">
+    <input formControlName="precio" type="number" placeholder="Precio">
+    <input formControlName="cantidad" type="number" placeholder="Cantidad">
+    <input formControlName="fecha" type="date">
+    <button type="submit" (click)="botonInsumo()">Ingresar</button>
+  </form>
   <div class="marco">
     <h1>Insumo</h1>
     <button type="button">+</button>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>N°</th>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Fecha</th>
-        <th>Total</th>
-        <th>Editar</th>
-        <th>Borrar</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let insumo of insumos">
-      <tr>
-        <td>{{insumo.id}}</td>
-        <td>{{insumo.nombre}}</td>
-        <td>{{insumo.precio}}</td>
-        <td>{{insumo.cantidad}}</td>
-        <td>{{insumo.fecha}}</td>
-        <td>{{insumo.precio*insumo.cantidad}}</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="insumos">
+    
+    <table>
+      <thead>
+        <tr>
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Editar</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let insumo of insumos;let i = index">
+          <td>{{i+1}}</td>
+          <td>{{insumo.nombre}}</td>
+          <td>{{insumo.precio}}</td>
+          <td>{{insumo.cantidad}}</td>
+          <td>{{insumo.fecha}}</td>
+          <td>{{insumo.precio*insumo.cantidad}}</td>
+          <td><button type="button" (click)="selectEdithInsumo(insumo)">editar</button></td>
+          <td><button type="button" (click)="eliminarInsumo(insumo.id)">borrar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</main>

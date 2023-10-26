@@ -33,4 +33,25 @@ export class InsumoService {
   get lista():Observable<Insumo[]>{
     return this.insumos.asObservable();
   }
+
+  crearInsumo(insumo:Insumo){
+    insumo.proyecto=this.proyecto;
+    console.log("insumo: "+this.proyecto);
+    return this.http.post<Proyecto>(this.UrlInsumo+'/crear', insumo, {
+      observe: 'response'
+    });
+  }
+
+  actualizarInsumo(insumo:Insumo){
+    insumo.proyecto=this.proyecto;
+    return this.http.put<Proyecto>(this.UrlInsumo+'/actualizar', insumo, {
+      observe: 'response'
+    });
+  }
+
+  eliminarInsumo(idInsumo:number){
+    return this.http.delete(this.UrlInsumo+'/eliminar/'+idInsumo,{
+      responseType: "text"
+    });
+  }
 }

@@ -34,9 +34,13 @@ tbody {
   overflow: auto;
 }
 
-.insumos {
+main{
   background-color: aliceblue;
-  height: 174px;
+}
+
+.insumos {
+  
+  height: 172px;
   overflow-y: auto;
 }
 
@@ -49,13 +53,13 @@ tbody {
   
   /* Track */
   ::-webkit-scrollbar-track {
-    
+    background-color: blueviolet;
     /* linea blanca de fondo */
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background-color: white;
   }
   
   /* Handle on hover */

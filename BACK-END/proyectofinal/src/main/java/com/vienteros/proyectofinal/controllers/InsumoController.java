@@ -34,7 +34,7 @@ public class InsumoController {
     }
 
 
-    @DeleteMapping("/elimiar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminarInsumo(@PathVariable int id){
         return ResponseEntity.ok(service.eliminarInsumo(id));
     }

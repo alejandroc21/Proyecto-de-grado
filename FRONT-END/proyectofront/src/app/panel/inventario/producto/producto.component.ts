@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Producto } from 'src/app/models/producto';
+import { Proyecto } from 'src/app/models/proyecto';
 import { ProductoService } from 'src/app/services/inventario/producto.service';
 
 @Component({
@@ -10,8 +12,20 @@ import { ProductoService } from 'src/app/services/inventario/producto.service';
 export class ProductoComponent implements OnInit{
 
   productos:Producto[]=[];
+  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null};
+  producto:Producto={id:0,nombre:'',descripcion:'',cantidadInicial:0,cantidadFinal:0,precio:0,fecha:new Date(''),proyecto:this.proyecto};
+  selectedProducto:Producto={id:0,nombre:'',descripcion:'',cantidadInicial:0,cantidadFinal:0,precio:0,fecha:new Date(''),proyecto:this.proyecto};
+  editar:Boolean=false;
 
-  constructor(private productoService:ProductoService){}
+  productoForm=this.formBuilder.group({
+    nombre:['', Validators.required],
+    descripcion:[''],
+    cantidadFinal:['',Validators.required],
+    precio:['',Validators.required],
+    fecha:['',Validators.required]
+  });
+
+  constructor(private productoService:ProductoService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.productoService.productos.subscribe((data)=>this.productos=data);
@@ -20,5 +34,84 @@ export class ProductoComponent implements OnInit{
 
   listarProductos(){
     this.productoService.listarProductos().subscribe((data)=>this.productos=data);
+  }
+
+  botonProducto(){
+    if(this.selectedProducto.id===0){
+      this.crearProducto();
+      console.log("boton crear");
+    }else{
+      this.actualizarProducto();
+      console.log("boton actualiza");
+    }
+    console.log(this.selectedProducto);
+          console.log(this.productoForm.value);
+  }
+
+  crearProducto(){
+    if(this.productoForm.valid){
+      this.producto.nombre=this.productoForm.value.nombre!;
+      this.producto.descripcion=this.productoForm.value.descripcion!;
+      this.producto.cantidadFinal=parseInt(this.productoForm.value.cantidadFinal!);
+      this.producto.precio=parseFloat(this.productoForm.value.precio!);
+      this.producto.fecha=new Date(this.productoForm.value.fecha!);
+      this.productoService.crearProducto(this.producto).subscribe(res=>{
+        this.productoForm.reset();
+        this.listarProductos();
+        console.log("crear");
+      });
+    }else{
+      this.productoForm.markAllAsTouched();
+    }
+    
+  }
+
+  actualizarProducto(){
+    if(this.productoForm.valid){
+      this.selectedProducto.nombre=this.productoForm.value.nombre!;
+      this.selectedProducto.descripcion=this.productoForm.value.descripcion!;
+      this.selectedProducto.precio=parseFloat(this.productoForm.value.precio!);
+      this.selectedProducto.cantidadFinal=parseInt(this.productoForm.value.cantidadFinal!);
+      this.selectedProducto.fecha=new Date(this.productoForm.value.fecha!);
+      this.productoService.actualizarProducto(this.selectedProducto).subscribe(res=>{
+        this.productoForm.reset();
+        this.listarProductos();
+        console.log("actualiza");
+        this.selectedProducto={id:0,nombre:'',descripcion:'',cantidadInicial:0,cantidadFinal:0,precio:0,fecha:new Date(''),proyecto:this.proyecto};
+      })
+    }else{
+      this.productoForm.markAllAsTouched();
+    }
+  }
+
+  selectEdithProducto(producto:Producto){
+    if(producto!==this.selectedProducto || !this.editar){
+      this.editar=true;
+      this.selectedProducto=producto;
+      console.log("select");
+      this.productoForm.setValue({
+        nombre: this.selectedProducto.nombre,
+        descripcion: this.selectedProducto.descripcion,
+        precio: this.selectedProducto.precio.toString(),
+        cantidadFinal: this.selectedProducto.cantidadFinal.toString(),
+        fecha:this.selectedProducto.fecha.toString()
+      });
+    }else{
+      this.editar=false;
+      this.selectedProducto={id:0,nombre:'',descripcion:'',cantidadInicial:0,cantidadFinal:0,precio:0,fecha:new Date(''),proyecto:this.proyecto};
+      this.productoForm.setValue({
+        nombre: '',
+        descripcion: '',
+        precio: '',
+        cantidadFinal: '',
+        fecha:''
+      });
+    }
+  }
+
+  eliminarProducto(idProducto:number){
+    this.productoService.eliminarProducto(idProducto).subscribe(res=>{
+      this.listarProductos();
+    });
   }
 }

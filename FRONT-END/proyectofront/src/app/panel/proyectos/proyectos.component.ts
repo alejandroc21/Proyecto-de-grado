@@ -34,6 +34,7 @@ export class ProyectosComponent implements OnInit{
       this.crearProyecto();
     }else{
       this.actualizarProyecto();
+      console.log("actualiza");
     }
   }
 
@@ -42,6 +43,7 @@ export class ProyectosComponent implements OnInit{
         this.proyectoService.crearProyecto(this.proyectoForm.value as Proyecto).subscribe(res =>{
           this.proyectoForm.reset();
           this.listar();
+          
         });
       }else{
         this.proyectoForm.markAllAsTouched();
@@ -55,6 +57,7 @@ export class ProyectosComponent implements OnInit{
       this.proyectoService.actualizarProyecto(this.selectProyecto).subscribe(res=>{
         this.proyectoForm.reset();
         this.listar();
+        this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null};
       });
     }else{
       this.proyectoForm.markAllAsTouched();
