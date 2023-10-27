@@ -41,6 +41,10 @@
     border-radius: 0px 0px 15px 15px;
     overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
   }
+
+  main{
+    background-color: aliceblue;
+  }
   
 
   /* SCROLL */

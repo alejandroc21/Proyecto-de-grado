@@ -4,6 +4,7 @@ import { Proyecto } from 'src/app/models/proyecto';
 import { Venta } from 'src/app/models/venta';
 import { ProyectoService } from '../proyectos/proyecto.service';
 import { HttpClient } from '@angular/common/http';
+import { Producto } from 'src/app/models/producto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,25 @@ export class VentaService {
 
   get lista():Observable<Venta[]>{
     return this.ventas.asObservable();
+  }
+
+  crearVenta(venta: Venta){
+    venta.proyecto=this.proyecto;
+    return this.http.post<Proyecto>(this.UrlVenta+'/crear', venta, {
+      observe: 'response'
+    });
+  }
+
+  actualizarVenta(venta: Venta){
+    venta.proyecto=this.proyecto;
+    return this.http.put<Proyecto>(this.UrlVenta+'/actualizar', venta, {
+      observe: 'response'
+    });
+  }
+
+  eliminarVenta(idVenta:number){
+    return this.http.delete(this.UrlVenta+'/eliminar/'+idVenta,{
+      responseType: "text"
+    });
   }
 }

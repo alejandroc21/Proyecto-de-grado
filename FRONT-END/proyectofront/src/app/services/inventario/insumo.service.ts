@@ -36,7 +36,6 @@ export class InsumoService {
 
   crearInsumo(insumo:Insumo){
     insumo.proyecto=this.proyecto;
-    console.log("insumo: "+this.proyecto);
     return this.http.post<Proyecto>(this.UrlInsumo+'/crear', insumo, {
       observe: 'response'
     });

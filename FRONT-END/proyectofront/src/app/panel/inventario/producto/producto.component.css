@@ -41,6 +41,10 @@ tbody {
   overflow: auto;
 }
 
+main{
+  background-color: aliceblue;
+}
+
 
 /* SCROLL */
   /* width */

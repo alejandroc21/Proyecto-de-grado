@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface VentaRepository extends CrudRepository<Venta, Integer> {
-   // List<Venta> findByProyectoId(int idProyecto);
+    List<Venta> findByProyectoId(int idProyecto);
 
-    List<Venta> findAllByProductoProyectoId(int idProyecto);
+    //List<Venta> findAllByProductoProyectoId(int idProyecto);
 }

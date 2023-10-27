@@ -19,11 +19,11 @@ public class VentaService implements IVentaService {
 
     @Override
     public List<VentaDTO> listarVentas(int idProyecto) {
-        List<Venta> ventas = repository.findAllByProductoProyectoId(idProyecto);
+        List<Venta> ventas = repository.findByProyectoId(idProyecto);
         List<VentaDTO> ventasDTO = ventas.stream().map(venta -> {
             VentaDTO ventaDTO = VentaDTO.builder()
                     .id(venta.getId())
-                    .nombre(venta.getProducto().getNombre())
+                    .nombre(venta.getNombre())
                     .precio(venta.getPrecio())
                     .cantidad(venta.getCantidad())
                     .fecha(venta.getFecha()).build();

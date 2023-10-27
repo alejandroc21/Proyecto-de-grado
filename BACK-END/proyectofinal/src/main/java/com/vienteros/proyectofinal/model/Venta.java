@@ -21,7 +21,7 @@ public class Venta {
     private int cantidad;
     private Date fecha;
 
-    @ManyToOne(targetEntity = Producto.class)
-    @JoinColumn(name = "id_producto")
-    private Producto producto;
+    @ManyToOne(targetEntity = Proyecto.class)
+    @JoinColumn(name = "id_proyecto")
+    private Proyecto proyecto;
 }

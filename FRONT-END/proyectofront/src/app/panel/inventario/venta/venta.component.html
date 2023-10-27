@@ -1,33 +1,47 @@
-<div class="marco">
-    <h1>Venta</h1>
-    <button type="button">+</button>
-  </div>
-  <div class="ventas" id="venta">
-    <table>
-      <thead>
-        <tr>
-          <th>N°</th>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Cantidad</th>
-          <th>Fecha</th>
-          <th>Total</th>
-          <th>Editar</th>
-          <th>Borrar</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let venta of ventas">
-        <tr>
-          <td>{{venta.id}}</td>
-          <td>{{venta.nombre}}</td>
-          <td>{{venta.precio}}</td>
-          <td>{{venta.cantidad}}</td>
-          <td>{{venta.cantidad}}</td>
-          <td>{{venta.cantidad*venta.precio}}</td>
-          <td></td>
-          <td></td>
-        </tr>
-        
-      </tbody>
-    </table>
-  </div>
+<main>
+  <form [formGroup]="ventaForm">
+    <label for="productos">Producto:</label>
+    <select formControlName="nombre" name="productos" id="productos">
+      <option *ngFor="let producto of productos"  value="{{producto.nombre}}">{{producto.nombre}}</option>
+    </select>
+    <input formControlName="precio" type="number" placeholder="precio">
+    <input formControlName="cantidad" type="number" placeholder="cantidad">
+    <input formControlName="fecha" type="date">
+    <button type="submit" (click)="botonVenta()">Agregar</button>
+  
+  </form>
+  
+  <div class="marco">
+      <h1>Venta</h1>
+      <button type="button">+</button>
+    </div>
+    <div class="ventas" id="venta">
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let venta of ventas">
+          <tr>
+            <td>{{venta.id}}</td>
+            <td>{{venta.nombre}}</td>
+            <td>{{venta.precio}}</td>
+            <td>{{venta.cantidad}}</td>
+            <td>{{venta.cantidad}}</td>
+            <td>{{venta.cantidad*venta.precio}}</td>
+            <td><button type="button" (click)="selectEdithVenta(venta)">editar</button></td>
+          <td><button type="button" (click)="eliminarVenta(venta.id)">borrar</button></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+</main>

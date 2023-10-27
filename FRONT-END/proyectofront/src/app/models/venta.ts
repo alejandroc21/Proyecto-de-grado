@@ -1,4 +1,4 @@
-import { Producto } from "./producto";
+import { Proyecto } from "./proyecto";
 
 export interface Venta{
     id:number;
@@ -6,5 +6,5 @@ export interface Venta{
     cantidad: number;
     precio:number;
     fecha: Date;
-    producto:Producto;
+    proyecto: Proyecto;
 }

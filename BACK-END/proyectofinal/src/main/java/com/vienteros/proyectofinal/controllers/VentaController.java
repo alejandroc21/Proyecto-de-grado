@@ -32,7 +32,7 @@ public class VentaController {
         return ResponseEntity.ok(service.actualizarVenta(venta));
     }
 
-    @DeleteMapping("/elimiar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminarVenta(@PathVariable int id){
         return ResponseEntity.ok(service.eliminarVenta(id));
     }

@@ -28,6 +28,10 @@ public class Proyecto {
     @JsonIgnore
     private List<Producto> productos;
 
+    @OneToMany(targetEntity = Venta.class, cascade = CascadeType.REMOVE, mappedBy = "proyecto")
+    @JsonIgnore
+    private List<Venta> ventas;
+
     @ManyToOne(targetEntity = Usuario.class)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
