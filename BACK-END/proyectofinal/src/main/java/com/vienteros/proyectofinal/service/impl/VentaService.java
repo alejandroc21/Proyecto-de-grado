@@ -18,6 +18,20 @@ public class VentaService implements IVentaService {
     private VentaRepository repository;
 
     @Override
+    public List<VentaDTO> listarTodosVentas(int idUsuario) {
+        List<Venta> ventas = repository.findByProyectoUsuarioId(idUsuario);
+        return ventas.stream().map(venta -> {
+            VentaDTO ventaDTO = VentaDTO.builder()
+                    .id(venta.getId())
+                    .nombre(venta.getNombre())
+                    .precio(venta.getPrecio())
+                    .cantidad(venta.getCantidad())
+                    .fecha(venta.getFecha()).build();
+            return ventaDTO;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
     public List<VentaDTO> listarVentas(int idProyecto) {
         List<Venta> ventas = repository.findByProyectoId(idProyecto);
         List<VentaDTO> ventasDTO = ventas.stream().map(venta -> {
@@ -62,4 +76,6 @@ public class VentaService implements IVentaService {
         repository.deleteById(id);
         return "venta eliminada";
     }
+
+
 }

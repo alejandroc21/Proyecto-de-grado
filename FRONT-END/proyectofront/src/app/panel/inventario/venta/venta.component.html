@@ -1,10 +1,10 @@
 <main>
   <form [formGroup]="ventaForm">
     <label for="productos">Producto:</label>
-    <select formControlName="nombre" name="productos" id="productos">
-      <option *ngFor="let producto of productos"  value="{{producto.nombre}}">{{producto.nombre}}</option>
+    <select formControlName="nombre" name="productos" id="productos" style="width:180px;"> 
+      <option *ngFor="let producto of productos" value="{{producto.nombre}}">{{producto.nombre}}</option>
     </select>
-    <input formControlName="precio" type="number" placeholder="precio">
+    <input formControlName="precio" type="number"  placeholder="precio">
     <input formControlName="cantidad" type="number" placeholder="cantidad">
     <input formControlName="fecha" type="date">
     <button type="submit" (click)="botonVenta()">Agregar</button>
@@ -13,7 +13,6 @@
   
   <div class="marco">
       <h1>Venta</h1>
-      <button type="button">+</button>
     </div>
     <div class="ventas" id="venta">
       <table>

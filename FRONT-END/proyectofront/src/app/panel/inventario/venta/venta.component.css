@@ -1,6 +1,5 @@
 .marco {
     display: flex;
-    background-color: blueviolet;
   }
   
   h1 {
@@ -18,12 +17,11 @@
   
   td,
   th {
-    border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px 15px;
   }
   
   thead th {
-    background-color: blueviolet;
+    background-color: #009879;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -31,13 +29,14 @@
     position: sticky; /* make the table heads sticky */
     top: -1px;
   }
+
+ 
   tbody {
     overflow: auto;
   }
   
   .ventas {
-    background-color: blueviolet;
-    height: 115px;
+    height: 300px;
     border-radius: 0px 0px 15px 15px;
     overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
   }
@@ -45,7 +44,35 @@
   main{
     background-color: aliceblue;
   }
+
+  /* form */
+
+  label {
+    margin: 5px 10px 5px 0;
+  }
+
+  input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
   
+  form button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+  }
+
+  thead tr {
+    color: #ffffff;
+    text-align: left;
+}
+  
+
 
   /* SCROLL */
   /* width */

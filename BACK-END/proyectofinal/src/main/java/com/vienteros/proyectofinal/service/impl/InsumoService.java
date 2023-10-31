@@ -20,6 +20,21 @@ public class InsumoService implements IInsumoService{
 
 
     @Override
+    public List<InsumoDTO> listarTodosInsumos(int idUsuario) {
+        List<Insumo> insumos = repository.findByProyectoUsuarioId(idUsuario);
+        return insumos.stream().map(insumo -> {
+            InsumoDTO insumoDTO = InsumoDTO.builder()
+                    .id(insumo.getId())
+                    .nombre(insumo.getNombre())
+                    .cantidad(insumo.getCantidad())
+                    .precio(insumo.getPrecio())
+                    .fecha(insumo.getFecha())
+                    .build();
+            return insumoDTO;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
     public List<InsumoDTO> listarInsumos(int idProyecto) {
         List<Insumo> insumos = repository.findByProyectoId(idProyecto);
         List<InsumoDTO> insumosDTO = insumos.stream().map(insumo -> {

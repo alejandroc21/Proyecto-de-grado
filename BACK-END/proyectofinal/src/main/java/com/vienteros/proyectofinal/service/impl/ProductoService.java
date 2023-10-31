@@ -19,6 +19,23 @@ public class ProductoService implements IProductoService{
     @Autowired
     private ProductoRepository repository;
 
+    @Override
+    public List<ProductoDTO> listarTodosProductos(int idUsuario) {
+        List<Producto> productos = repository.findByProyectoUsuarioId(idUsuario);
+        List<ProductoDTO> productosDTO = productos.stream().map(producto->{
+            ProductoDTO productoDTO = ProductoDTO.builder()
+                    .id(producto.getId())
+                    .nombre(producto.getNombre())
+                    .descripcion(producto.getDescripcion())
+                    .cantidadInicial(producto.getCantidadInicial())
+                    .cantidadFinal(producto.getCantidadFinal())
+                    .precio(producto.getPrecio())
+                    .fecha(producto.getFecha())
+                    .build();
+            return productoDTO;
+        }).collect(Collectors.toList());
+        return productosDTO;
+    }
 
     @Override
     public List<ProductoDTO> listarProductos(int idProyecto) {
@@ -77,4 +94,6 @@ public class ProductoService implements IProductoService{
         repository.deleteById(id);
         return "producto eliminado";
     }
+
+
 }

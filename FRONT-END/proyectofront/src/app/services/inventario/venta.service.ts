@@ -5,6 +5,7 @@ import { Venta } from 'src/app/models/venta';
 import { ProyectoService } from '../proyectos/proyecto.service';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from 'src/app/models/producto';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class VentaService {
   UrlVenta='http://127.0.0.1:8080/api/venta';
   proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null};
   ventas:BehaviorSubject<Venta[]> = new BehaviorSubject<Venta[]>([]);
+  userData?:Usuario;
 
   constructor(private http:HttpClient, private proyectoService:ProyectoService) {
     proyectoService.selected.subscribe({
@@ -22,7 +24,18 @@ export class VentaService {
     });
    }
 
+   listarTodoVentas(){
+    this.userData=this.proyectoService.getUsuarioData();
+    return this.http.get<Venta[]>(this.UrlVenta+'/listar-todo/'+this.userData.id).pipe(
+      tap((data:Venta[])=>{
+        this.ventas.next(data)
+      }));
+   }
+
    listarVentas(){
+    if(this.proyecto.id==0){
+      return this.listarTodoVentas();
+    }
     return this.http.get<Venta[]>(this.UrlVenta+'/listar/'+this.proyecto.id).pipe(
       tap((data:Venta[])=>{
         this.ventas.next(data)

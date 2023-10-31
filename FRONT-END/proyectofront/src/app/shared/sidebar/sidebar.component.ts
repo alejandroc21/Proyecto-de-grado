@@ -12,14 +12,15 @@ import { ProyectoService } from "src/app/services/proyectos/proyecto.service";
 })
 export class SidebarComponent implements OnInit {
   proyectos: Proyecto[] = [];
-  clickProyecto: number = 0;
-  anterior: number = 0;
-  selected: Boolean = false;
+  vacio:Proyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+  // clickProyecto: number = 0;
+  // anterior: number = 0;
+  // selected: Boolean = false;
   constructor(
     private proyectoService: ProyectoService,
     private insumoService: InsumoService,
     private productoService: ProductoService,
-    private VentasService:VentaService
+    private ventasService:VentaService
   ) {}
   ngOnInit(): void {
     this.proyectoService.proyectosObs.subscribe({
@@ -36,7 +37,14 @@ export class SidebarComponent implements OnInit {
     this.proyectoService.elegido(proyecto);
     this.insumoService.listarInsumos().subscribe();
     this.productoService.listarProductos().subscribe();
-    this.VentasService.listarVentas().subscribe();
+    this.ventasService.listarVentas().subscribe();
+  }
+
+  total(){
+    this.proyectoService.elegido(this.vacio);
+    this.insumoService.listarInsumos().subscribe();
+    this.productoService.listarProductos().subscribe();
+    this.ventasService.listarVentas().subscribe();
   }
 
   // elegido(id: number) {

@@ -17,6 +17,11 @@ public class VentaController {
     @Autowired
     private IVentaService service;
 
+    @GetMapping("/listar-todo/{idUsuario}")
+    public ResponseEntity<List<VentaDTO>> listasTodosVentas(@PathVariable int idUsuario){
+        return ResponseEntity.ok(service.listarTodosVentas(idUsuario));
+    }
+
     @GetMapping("/listar/{idProyecto}")
     public ResponseEntity<List<VentaDTO>> listarVentas(@PathVariable int idProyecto){
         return ResponseEntity.ok(service.listarVentas(idProyecto));

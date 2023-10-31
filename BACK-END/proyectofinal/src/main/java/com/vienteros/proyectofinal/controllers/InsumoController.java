@@ -18,6 +18,11 @@ public class InsumoController {
     @Autowired
     private IInsumoService service;
 
+    @GetMapping("/listar-todo/{idUsuario}")
+    public ResponseEntity<List<InsumoDTO>> listarTodosInsumos(@PathVariable int idUsuario){
+        return ResponseEntity.ok(service.listarTodosInsumos(idUsuario));
+    }
+
     @GetMapping("/listar/{idProyecto}")
     public ResponseEntity<List<InsumoDTO>> listarInsumos(@PathVariable int idProyecto){
         return ResponseEntity.ok(service.listarInsumos(idProyecto));

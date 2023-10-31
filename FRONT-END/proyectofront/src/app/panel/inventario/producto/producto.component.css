@@ -1,6 +1,5 @@
 .marco {
   display: flex;
-  background-color: blueviolet;
 }
 
 h1 {
@@ -18,31 +17,62 @@ table {
 
 td,
 th {
-  border: 1px solid #ddd;
   padding: 8px;
 }
 
 thead th {
-  background-color: blueviolet;
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-
+  background-color: #009879;
   position: sticky; /* make the table heads sticky */
   top: -1px;
 }
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+
 tbody {
   overflow: auto;
 }
 
 .productos {
-  background-color: aqua;
-  height: 175px;
+  height: 300px;
   overflow: auto;
 }
 
 main{
   background-color: aliceblue;
+}
+
+/* form */
+
+label {
+  margin: 5px 10px 5px 0;
+}
+
+input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+thead tr {
+  
+  color: #ffffff;
+  text-align: left;
 }
 
 

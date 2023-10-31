@@ -13,4 +13,6 @@ public interface IVentaService {
     VentaDTO actualizarVenta(Venta venta);
 
     String eliminarVenta(int id);
+
+    List<VentaDTO> listarTodosVentas(int idUsuario);
 }

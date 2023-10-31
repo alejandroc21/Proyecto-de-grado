@@ -1,0 +1,15 @@
+nav{
+    background: white;
+    padding: 10px 0px;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+    margin: 0 5px 0 5px;
+}
+
+a:hover{
+    color:#009879;
+    /* transform: scale(1.1); */
+}

@@ -10,4 +10,6 @@ import java.util.List;
 public interface InsumoRepository extends CrudRepository<Insumo,Integer> {
 
     List<Insumo> findByProyectoId(int idProyecto);
+
+    List<Insumo> findByProyectoUsuarioId(int idUsuario);
 }

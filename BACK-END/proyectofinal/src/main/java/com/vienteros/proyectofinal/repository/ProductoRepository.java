@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProductoRepository extends CrudRepository<Producto, Integer> {
 
     List<Producto> findByProyectoId(int idProyecto);
+
+    List<Producto> findByProyectoUsuarioId(int idUsuario);
 }

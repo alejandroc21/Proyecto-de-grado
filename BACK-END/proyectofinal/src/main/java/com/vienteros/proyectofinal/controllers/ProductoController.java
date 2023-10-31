@@ -17,6 +17,11 @@ public class ProductoController {
     @Autowired
     private IProductoService service;
 
+    @GetMapping("/listar-todo/{idUsuario}")
+    public ResponseEntity<List<ProductoDTO>> listarTodosProductos(@PathVariable int idUsuario){
+        return  ResponseEntity.ok(service.listarTodosProductos(idUsuario));
+    }
+
     @GetMapping("/listar/{idProyecto}")
     public ResponseEntity<List<ProductoDTO>> listarProductos(@PathVariable int idProyecto){
         return ResponseEntity.ok(service.listarProductos(idProyecto));
@@ -36,9 +41,5 @@ public class ProductoController {
     public ResponseEntity<String> eliminarProducto(@PathVariable int id){
         return ResponseEntity.ok(service.eliminarProducto(id));
     }
-
-
-
-
 
 }

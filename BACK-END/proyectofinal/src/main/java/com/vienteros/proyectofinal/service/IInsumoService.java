@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IInsumoService {
 
+    List<InsumoDTO> listarTodosInsumos(int idUsuario);
+
     List<InsumoDTO> listarInsumos(int idProyecto);
 
     InsumoDTO guardarInsumo(Insumo insumo);
@@ -14,4 +16,6 @@ public interface IInsumoService {
     InsumoDTO actualizarInsumo(Insumo insumo);
 
     String eliminarInsumo(int id);
+
+
 }

@@ -35,6 +35,11 @@ export class VentaComponent implements OnInit{
     this.listarVentas();
   }
 
+  listarTodoVentas(){
+    this.ventaService.listarTodoVentas().subscribe((data)=>this.ventas=data);
+    console.log("listar todo");
+  }
+
   listarVentas(){
     this.ventaService.listarVentas().subscribe((data)=>this.ventas=data);
   }

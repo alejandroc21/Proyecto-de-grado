@@ -17,6 +17,17 @@
   background-color: aliceblue;
   cursor: pointer;
 }
+.total {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 95%;
+  height: 70px;
+  margin: 10px auto;
+  border-radius: 15px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
 
 h1 {
   pointer-events: none;
@@ -24,6 +35,11 @@ h1 {
 }
 
 .proyecto:focus {
+  background: gray;
+  color: white;
+}
+
+.total:focus {
   background: gray;
   color: white;
 }
