@@ -50,6 +50,9 @@ export class InsumoService {
 
   crearInsumo(insumo:Insumo){
     insumo.proyecto=this.proyecto;
+    if(this.proyecto.id==0){
+      alert("elige un proyecto");
+    }
     return this.http.post<Proyecto>(this.UrlInsumo+'/crear', insumo, {
       observe: 'response'
     });

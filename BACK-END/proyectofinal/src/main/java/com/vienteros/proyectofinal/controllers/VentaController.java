@@ -27,7 +27,7 @@ public class VentaController {
         return ResponseEntity.ok(service.listarVentas(idProyecto));
     }
 
-    @PostMapping("crear")
+    @PostMapping("/crear")
     public ResponseEntity<VentaDTO> crearVenta(@RequestBody Venta venta){
         return ResponseEntity.ok(service.crearVenta(venta));
     }

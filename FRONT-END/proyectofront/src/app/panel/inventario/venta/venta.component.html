@@ -4,10 +4,10 @@
     <select formControlName="nombre" name="productos" id="productos" style="width:180px;"> 
       <option *ngFor="let producto of productos" value="{{producto.nombre}}">{{producto.nombre}}</option>
     </select>
-    <input formControlName="precio" type="number"  placeholder="precio">
-    <input formControlName="cantidad" type="number" placeholder="cantidad">
+    <input formControlName="precio" type="number"  placeholder="Precio">
+    <input formControlName="cantidad" type="number" placeholder="Cantidad">
     <input formControlName="fecha" type="date">
-    <button type="submit" (click)="botonVenta()">Agregar</button>
+    <button type="submit" (click)="botonVenta()">Ingresar</button>
   
   </form>
   
@@ -28,14 +28,14 @@
             <th>Borrar</th>
           </tr>
         </thead>
-        <tbody *ngFor="let venta of ventas">
+        <tbody *ngFor="let venta of ventas;let i = index">
           <tr>
-            <td>{{venta.id}}</td>
+            <td>{{i+1}}</td>
             <td>{{venta.nombre}}</td>
-            <td>{{venta.precio}}</td>
+            <td>{{venta.precio | currency:'USD':'symbol':'1.0-0'}}</td>
             <td>{{venta.cantidad}}</td>
-            <td>{{venta.cantidad}}</td>
-            <td>{{venta.cantidad*venta.precio}}</td>
+            <td>{{venta.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
+            <td>{{venta.cantidad*venta.precio | currency:'USD':'symbol':'1.0-0'}}</td>
             <td><button type="button" (click)="selectEdithVenta(venta)">editar</button></td>
           <td><button type="button" (click)="eliminarVenta(venta.id)">borrar</button></td>
           </tr>

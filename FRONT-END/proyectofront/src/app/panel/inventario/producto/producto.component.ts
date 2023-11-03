@@ -52,9 +52,15 @@ export class ProductoComponent implements OnInit{
     if(this.productoForm.valid){
       this.producto.nombre=this.productoForm.value.nombre!;
       this.producto.descripcion=this.productoForm.value.descripcion!;
+      this.producto.cantidadInicial=parseInt(this.productoForm.value.cantidadFinal!);
       this.producto.cantidadFinal=parseInt(this.productoForm.value.cantidadFinal!);
       this.producto.precio=parseFloat(this.productoForm.value.precio!);
-      this.producto.fecha=new Date(this.productoForm.value.fecha!);
+      //this.producto.fecha=new Date(this.productoForm.value.fecha!);
+
+      let formFecha=this.productoForm.value.fecha;
+      let reparar= new Date(formFecha);
+      this.producto.fecha=new Date (reparar.getTime()+reparar.getTimezoneOffset()*60000);
+
       this.productoService.crearProducto(this.producto).subscribe(res=>{
         this.productoForm.reset();
         this.listarProductos();
@@ -71,8 +77,14 @@ export class ProductoComponent implements OnInit{
       this.selectedProducto.nombre=this.productoForm.value.nombre!;
       this.selectedProducto.descripcion=this.productoForm.value.descripcion!;
       this.selectedProducto.precio=parseFloat(this.productoForm.value.precio!);
+      this.selectedProducto.cantidadInicial=parseInt(this.productoForm.value.cantidadFinal!);
       this.selectedProducto.cantidadFinal=parseInt(this.productoForm.value.cantidadFinal!);
-      this.selectedProducto.fecha=new Date(this.productoForm.value.fecha!);
+      //this.selectedProducto.fecha=new Date(this.productoForm.value.fecha!);
+
+      let formFecha=this.productoForm.value.fecha;
+      let reparar= new Date(formFecha);
+      this.producto.fecha=new Date (reparar.getTime()+reparar.getTimezoneOffset()*60000);
+
       this.productoService.actualizarProducto(this.selectedProducto).subscribe(res=>{
         this.productoForm.reset();
         this.listarProductos();
@@ -88,7 +100,6 @@ export class ProductoComponent implements OnInit{
     if(producto!==this.selectedProducto || !this.editar){
       this.editar=true;
       this.selectedProducto=producto;
-      console.log("select");
       this.productoForm.setValue({
         nombre: this.selectedProducto.nombre,
         descripcion: this.selectedProducto.descripcion,

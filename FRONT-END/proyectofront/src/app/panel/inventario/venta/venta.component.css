@@ -1,5 +1,14 @@
+.ng-valid:not(form).ng-touched{
+  border: 1px solid #42A948;
+}
+
+.ng-invalid:not(form).ng-touched{
+  border: 1px solid #A94442;
+}
+
 .marco {
     display: flex;
+    padding-top: 30px;
   }
   
   h1 {
@@ -36,13 +45,14 @@
   }
   
   .ventas {
-    height: 300px;
+    height: 313px;
     border-radius: 0px 0px 15px 15px;
     overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
   }
 
   main{
     background-color: aliceblue;
+    border-radius: 0px 0px 15px 15px;
   }
 
   /* form */

@@ -28,10 +28,10 @@
         <tr *ngFor="let insumo of insumos;let i = index">
           <td>{{i+1}}</td>
           <td>{{insumo.nombre}}</td>
-          <td>{{insumo.precio}}</td>
+          <td>{{insumo.precio | currency:'USD':'symbol':'1.0-0'}}</td>
           <td>{{insumo.cantidad}}</td>
-          <td>{{insumo.fecha}}</td>
-          <td>{{insumo.precio*insumo.cantidad}}</td>
+          <td>{{insumo.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
+          <td>{{insumo.precio*insumo.cantidad | currency:'USD':'symbol':'1.0-0'}}</td>
           <td><button type="button" (click)="selectEdithInsumo(insumo)">editar</button></td>
           <td><button type="button" (click)="eliminarInsumo(insumo.id)">borrar</button></td>
         </tr>

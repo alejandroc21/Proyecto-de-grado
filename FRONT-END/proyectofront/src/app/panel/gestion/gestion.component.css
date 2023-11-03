@@ -1,0 +1,27 @@
+.chart{
+    height: 82%;
+}
+
+.datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 20%;
+    height: 70px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: aliceblue;
+  }
+
+  .data{
+    display: flex;
+  }
+
+  .title{
+    display: flex;
+  }
+
+  p{
+    margin-left:10px;
+  }

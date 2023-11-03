@@ -1,10 +1,10 @@
 <main>
   <form [formGroup]="productoForm">
-    <input formControlName="nombre" type="text" placeholder="nombre">
-    <input formControlName="descripcion" type="text" placeholder="descripcion">
-    <input formControlName="precio" type="number" placeholder="precio">
-    <input formControlName="cantidadFinal" type="number" placeholder="cantidad">
-    <input formControlName="fecha" type="date" placeholder="fecha">
+    <input formControlName="nombre" type="text" placeholder="Nombre">
+    <input formControlName="precio" type="number" placeholder="Precio">
+    <input formControlName="cantidadFinal" type="number" placeholder="Cantidad">
+    <input formControlName="descripcion" type="text" placeholder="Descripcion">
+    <input formControlName="fecha" type="date" placeholder="Fecha">
     <button type="submit" (click)="botonProducto()">Ingresar</button>
 
   </form>
@@ -27,15 +27,15 @@
         <th>Borrar</th>
       </tr>
     </thead>
-    <tbody *ngFor="let producto of productos">
+    <tbody *ngFor="let producto of productos;let i = index">
       <tr>
-        <td>{{producto.id}}</td>
+        <td>{{i+1}}</td>
         <td>{{producto.nombre}}</td>
         <td>{{producto.descripcion}}</td>
-        <td>{{producto.precio}}</td>
+        <td>{{producto.precio | currency:'USD':'symbol':'1.0-0'}}</td>
         <td>{{producto.cantidadFinal}}</td>
-        <td>{{producto.fecha}}</td>
-        <td>{{producto.precio*producto.cantidadFinal}}</td>
+        <td>{{producto.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
+        <td>{{producto.precio*producto.cantidadFinal | currency:'USD':'symbol':'1.0-0'}}</td>
         <td><button type="button" (click)="selectEdithProducto(producto)">editar</button></td>
           <td><button type="button" (click)="eliminarProducto(producto.id)">borrar</button></td>
       </tr>

@@ -49,6 +49,9 @@ export class VentaService {
 
   crearVenta(venta: Venta){
     venta.proyecto=this.proyecto;
+    if(this.proyecto.id==0){
+      alert("elige un proyecto");
+    }
     return this.http.post<Proyecto>(this.UrlVenta+'/crear', venta, {
       observe: 'response'
     });
@@ -62,6 +65,7 @@ export class VentaService {
   }
 
   eliminarVenta(idVenta:number){
+    this.proyecto;
     return this.http.delete(this.UrlVenta+'/eliminar/'+idVenta,{
       responseType: "text"
     });

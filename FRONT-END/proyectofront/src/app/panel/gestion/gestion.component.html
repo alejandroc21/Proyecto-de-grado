@@ -1,0 +1,29 @@
+<div class="chart"> 
+    <canvas id="chart">{{ chart }}</canvas>
+</div>
+<div class="data">
+    <div  class="datos">
+        <div class="title">
+            <h1>Ventas</h1>
+            <p>{{precioVenta.length}}</p>
+        </div>
+        <h1>{{totalVenta | currency:'USD':'symbol':'1.0-0'}}</h1>
+    </div>
+    
+    <div class="datos">
+        <div class="title">
+            <h1>Productos</h1>
+            <p>{{precioProducto.length}}</p>
+        </div>
+        <h1>{{totalProducto | currency:'USD':'symbol':'1.0-0'}}</h1>
+    </div>
+
+    <div class="datos">
+        <div class="title">
+            <h1>Insumos</h1>
+            <p>{{precioInsumo.length}}</p>
+        </div>
+        <h1>{{totalInsumo | currency:'USD':'symbol':'1.0-0'}}</h1>
+    </div>
+    
+</div>

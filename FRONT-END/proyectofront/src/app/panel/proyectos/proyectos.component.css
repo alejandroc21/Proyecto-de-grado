@@ -35,3 +35,11 @@ form{
     color: aliceblue;
     margin-top: 50px;
 }
+
+p{
+    width: 45%;
+}
+
+h1{
+    width: 150px;
+}

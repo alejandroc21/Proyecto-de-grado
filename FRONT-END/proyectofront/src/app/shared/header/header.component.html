@@ -5,10 +5,10 @@
 <!-- <p>{{userData?.nombre}}</p> -->
 <header>
     <ul>
-        <li><a routerLink="proyectos">Proyectos</a></li>
-        <li><a routerLink="gestion">Gestion</a></li>
-        <li><a routerLink="inventario">Inventario</a></li>
+        <li><a routerLink="proyectos" routerLinkActive="active-link">Proyectos</a></li>
+        <li><a routerLink="gestion" routerLinkActive="active-link">Gestion</a></li>
+        <li><a routerLink="inventario" routerLinkActive="active-link">Inventario</a></li>
     </ul>
-    <h1>{{userData?.nombre}}</h1>
+    <h1>{{ userData?.nombre | titlecase }}</h1>
     <a routerLink="/">salir</a>
 </header>

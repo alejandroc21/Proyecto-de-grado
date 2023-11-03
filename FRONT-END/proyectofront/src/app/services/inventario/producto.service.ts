@@ -52,6 +52,9 @@ export class ProductoService {
 
   crearProducto(producto:Producto){
     producto.proyecto=this.proyecto;
+    if(this.proyecto.id==0){
+      alert("elige un proyecto");
+    }
     return this.http.post<Proyecto>(this.UrlProducto+'/crear', producto, {
       observe: 'response'
     }); 

@@ -53,7 +53,12 @@ export class InsumoComponent implements OnInit{
       this.insumo.nombre=this.insumoForm.value.nombre!;
       this.insumo.cantidad=parseInt(this.insumoForm.value.cantidad!);
       this.insumo.precio=parseFloat(this.insumoForm.value.precio!);
-      this.insumo.fecha=new Date(this.insumoForm.value.fecha!);
+      //this.insumo.fecha=new Date(this.insumoForm.value.fecha!);
+
+      let formFecha = this.insumoForm.value.fecha;
+      let reparar= new Date(formFecha);
+      this.insumo.fecha=new Date (reparar.getTime()+reparar.getTimezoneOffset()*60000);
+
       this.insumoService.crearInsumo(this.insumo).subscribe(res=>{
         this.insumoForm.reset();
         this.listarInsumos();
@@ -68,7 +73,12 @@ export class InsumoComponent implements OnInit{
       this.selectedInsumo.nombre=this.insumoForm.value.nombre!;
       this.selectedInsumo.cantidad=parseInt(this.insumoForm.value.cantidad!);
       this.selectedInsumo.precio=parseFloat(this.insumoForm.value.precio!);
-      this.selectedInsumo.fecha=new Date(this.insumoForm.value.fecha!);
+      //this.selectedInsumo.fecha=new Date(this.insumoForm.value.fecha!);
+
+      let formFecha = this.insumoForm.value.fecha;
+      let reparar= new Date(formFecha);
+      this.insumo.fecha=new Date (reparar.getTime()+reparar.getTimezoneOffset()*60000);
+
       this.insumoService.actualizarInsumo(this.selectedInsumo).subscribe(res=>{
         this.insumoForm.reset();
         this.listarInsumos();

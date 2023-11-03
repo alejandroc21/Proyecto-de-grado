@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Proyecto } from "src/app/models/proyecto";
+import { GestionService } from "src/app/services/gestion/gestion.service";
 import { InsumoService } from "src/app/services/inventario/insumo.service";
 import { ProductoService } from "src/app/services/inventario/producto.service";
 import { VentaService } from "src/app/services/inventario/venta.service";
@@ -20,7 +21,8 @@ export class SidebarComponent implements OnInit {
     private proyectoService: ProyectoService,
     private insumoService: InsumoService,
     private productoService: ProductoService,
-    private ventasService:VentaService
+    private ventasService:VentaService,
+    private gestionService:GestionService
   ) {}
   ngOnInit(): void {
     this.proyectoService.proyectosObs.subscribe({
@@ -33,11 +35,12 @@ export class SidebarComponent implements OnInit {
       .subscribe((data) => (this.proyectos = data));
   }
 
-  elegido(proyecto: Proyecto) {
+   elegido(proyecto: Proyecto) {
     this.proyectoService.elegido(proyecto);
     this.insumoService.listarInsumos().subscribe();
     this.productoService.listarProductos().subscribe();
     this.ventasService.listarVentas().subscribe();
+    this.gestionService.obtenerDatos();
   }
 
   total(){
@@ -45,6 +48,7 @@ export class SidebarComponent implements OnInit {
     this.insumoService.listarInsumos().subscribe();
     this.productoService.listarProductos().subscribe();
     this.ventasService.listarVentas().subscribe();
+    this.gestionService.obtenerDatos();
   }
 
   // elegido(id: number) {
@@ -75,5 +79,5 @@ export class SidebarComponent implements OnInit {
   //     console.log(id+"B:"+this.anterior);
   //     this.clickProyecto=0;
   //   }
-  // }
+  //}
 }
