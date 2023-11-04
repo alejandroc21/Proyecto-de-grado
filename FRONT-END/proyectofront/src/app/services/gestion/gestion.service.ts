@@ -8,6 +8,8 @@ import { Producto } from "src/app/models/producto";
 import { Proyecto } from "src/app/models/proyecto";
 import { ProyectoService } from "../proyectos/proyecto.service";
 import { BehaviorSubject, Observable, Subject, map } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Usuario } from "src/app/models/usuario";
 
 @Injectable({
   providedIn: "root",
@@ -25,6 +27,7 @@ export class GestionService {
   ventaMap: Subject<Map<number, object>>=new Subject();
   productoMap: Subject<Map<number, object>>=new Subject();
   insumoMap: Subject<Map<number, object>>=new Subject();
+  userData?:Usuario;
 
   vacio: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null };
 
@@ -32,7 +35,8 @@ export class GestionService {
     private ventaService: VentaService,
     private insumoService: InsumoService,
     private productoService: ProductoService,
-    private proyectoService: ProyectoService
+    private proyectoService: ProyectoService,
+    private http: HttpClient
   ) {
     ventaService.ventas.subscribe({
       next: (ventasData) => {
@@ -51,6 +55,11 @@ export class GestionService {
         this.productos = productosData;
       },
     });
+  }
+
+  excelUsuario(){
+    this.userData=this.proyectoService.getUsuarioData();
+    return this.http.get('http://127.0.0.1:8080/api/export/excel-all/'+this.userData.id, {responseType: 'blob'});
   }
 
   obtenerDatos() {

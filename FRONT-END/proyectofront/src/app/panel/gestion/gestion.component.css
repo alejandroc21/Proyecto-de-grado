@@ -25,3 +25,25 @@
   p{
     margin-left:10px;
   }
+
+  img{
+    height: 55px;
+    width: 55px;
+    border-radius: 15px;
+    background-color: #1D5F42;
+    margin: 5px 0;
+  }
+
+  button{
+    min-width: 10%;
+    height: 70px;
+    margin: 10px;
+    background-color: #1D5F42;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(1.1); 
+  }
