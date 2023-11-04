@@ -100,7 +100,6 @@ export class GestionService {
     this.ventas.forEach(venta=>{
       ventaPrecioFecha.set(venta.id, {precio: venta.precio*venta.cantidad, fecha: venta.fecha});
     });
-    console.log(ventaPrecioFecha);
     this.ventaMap.next(ventaPrecioFecha);
     this.ventaMap.asObservable();
     return ventaPrecioFecha;

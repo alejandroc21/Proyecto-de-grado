@@ -39,7 +39,34 @@ h1{
     color: #fff;
 }
 
+.title{
+    cursor:default;
+}
+
+h1:hover{
+    transform: scale(1.05); 
+}
+
+li:hover{
+    transform: scale(1.05); 
+}
+
+.out:hover{
+    transform: scale(1.1); 
+}
+
+img:hover{
+    filter: brightness(2.5) hue-rotate(1deg);
+}
+
+
 .active-link {
     color: aqua;
   }
+
+img{
+    width: 30px;
+    filter: brightness(0) invert(1);
+    margin: 4px 5px 0;
+}
 

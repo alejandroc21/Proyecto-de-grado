@@ -36,8 +36,8 @@
             <td>{{venta.cantidad}}</td>
             <td>{{venta.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
             <td>{{venta.cantidad*venta.precio | currency:'USD':'symbol':'1.0-0'}}</td>
-            <td><button type="button" (click)="selectEdithVenta(venta)">editar</button></td>
-          <td><button type="button" (click)="eliminarVenta(venta.id)">borrar</button></td>
+            <td><button type="button" (click)="selectEdithVenta(venta)"><img class="edith" src="/assets/images/edith.png"></button></td>
+          <td><button type="button" (click)="eliminarVenta(venta.id)"><img class="delete" src="/assets/images/delete.png"></button></td>
           </tr>
           
         </tbody>

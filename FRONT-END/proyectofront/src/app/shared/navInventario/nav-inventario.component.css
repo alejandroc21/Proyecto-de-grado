@@ -1,6 +1,6 @@
 nav{
     background: white;
-    padding: 10px 0px;
+    padding: 10px 5px;
     border-radius: 15px 15px 0 0;
 }
 
@@ -12,9 +12,8 @@ a{
 
 a:hover{
     color:#009879;
-    /* transform: scale(1.1); */
 }
 
 .active-link {
     color: #009879;
-  }
+}

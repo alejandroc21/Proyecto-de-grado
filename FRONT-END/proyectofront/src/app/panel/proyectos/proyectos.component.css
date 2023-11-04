@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 95%;
+    width: 97%;
     height: 70px;
     margin: 10px auto;
     border-radius: 5px;
@@ -21,7 +21,7 @@ form{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 95%;
+    width: 97%;
     height: 70px;
     margin: 10px auto;
     border-radius: 5px;
@@ -42,4 +42,30 @@ p{
 
 h1{
     width: 150px;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+}
+
+.edith{
+    width: 23px;
+}
+
+.delete{
+    width: 30px;
+}
+
+.add{
+    width: 35px;
+    margin: 4px 8px 0px;
+}
+
+button:hover {
+    transform: scale(1.1); 
+  }
+
+.proyecto:hover{
+    transform: scale(1.01);
 }

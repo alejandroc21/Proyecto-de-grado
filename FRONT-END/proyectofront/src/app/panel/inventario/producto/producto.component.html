@@ -1,9 +1,9 @@
 <main>
   <form [formGroup]="productoForm">
     <input formControlName="nombre" type="text" placeholder="Nombre">
+    <input formControlName="descripcion" type="text" placeholder="Descripcion">
     <input formControlName="precio" type="number" placeholder="Precio">
     <input formControlName="cantidadFinal" type="number" placeholder="Cantidad">
-    <input formControlName="descripcion" type="text" placeholder="Descripcion">
     <input formControlName="fecha" type="date" placeholder="Fecha">
     <button type="submit" (click)="botonProducto()">Ingresar</button>
 
@@ -36,8 +36,8 @@
         <td>{{producto.cantidadFinal}}</td>
         <td>{{producto.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
         <td>{{producto.precio*producto.cantidadFinal | currency:'USD':'symbol':'1.0-0'}}</td>
-        <td><button type="button" (click)="selectEdithProducto(producto)">editar</button></td>
-          <td><button type="button" (click)="eliminarProducto(producto.id)">borrar</button></td>
+        <td><button type="button" (click)="selectEdithProducto(producto)"><img class="edith" src="/assets/images/edith.png"></button></td>
+          <td><button type="button" (click)="eliminarProducto(producto.id)"><img class="delete" src="/assets/images/delete.png"></button></td>
       </tr>
     </tbody>
     </table>

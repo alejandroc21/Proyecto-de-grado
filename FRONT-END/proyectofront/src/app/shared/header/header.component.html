@@ -9,6 +9,6 @@
         <li><a routerLink="gestion" routerLinkActive="active-link">Gestion</a></li>
         <li><a routerLink="inventario" routerLinkActive="active-link">Inventario</a></li>
     </ul>
-    <h1>{{ userData?.nombre | titlecase }}</h1>
-    <a routerLink="/">salir</a>
+    <h1 class="title">{{ userData?.nombre | titlecase }}</h1>
+    <a class="out" routerLink="/"><img src="/assets/images/logout.png"></a>
 </header>

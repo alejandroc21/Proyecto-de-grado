@@ -1,8 +1,8 @@
 <aside>
-   <div class="total" tabindex="0" (click)="total()">
+   <div class="total" tabindex="0" [style.background-color]="marcador === 0 ? 'gray' : 'aliceblue'" [style.color]="marcador === 0 ? 'white' : 'black'" (click)="total(); marcado(0)">
       <h1>Total</h1>
    </div>
-   <div class="proyecto" tabindex="{{proyecto.id}}" *ngFor="let proyecto of proyectos" (click)="elegido(proyecto)" id="{{proyecto.id}}">
+   <div class="proyecto" tabindex="{{proyecto.id}}" *ngFor="let proyecto of proyectos" [style.background-color]="marcador === proyecto.id ? 'gray' : 'aliceblue'" [style.color]="marcador === proyecto.id ? 'white' : 'black'" (click)="elegido(proyecto)" id="{{proyecto.id}}">
     <h1>{{proyecto.nombre}}</h1>
    </div>
    <div class="vacio" *ngIf="proyectos.length===0">

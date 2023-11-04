@@ -14,6 +14,7 @@ import { ProyectoService } from "src/app/services/proyectos/proyecto.service";
 export class SidebarComponent implements OnInit {
   proyectos: Proyecto[] = [];
   vacio:Proyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+  marcador=0;
   // clickProyecto: number = 0;
   // anterior: number = 0;
   // selected: Boolean = false;
@@ -41,6 +42,7 @@ export class SidebarComponent implements OnInit {
     this.productoService.listarProductos().subscribe();
     this.ventasService.listarVentas().subscribe();
     this.gestionService.obtenerDatos();
+    this.marcado(proyecto.id);
   }
 
   total(){
@@ -49,6 +51,10 @@ export class SidebarComponent implements OnInit {
     this.productoService.listarProductos().subscribe();
     this.ventasService.listarVentas().subscribe();
     this.gestionService.obtenerDatos();
+  }
+
+  marcado(idProyecto:number){
+    this.marcador=idProyecto;
   }
 
   // elegido(id: number) {

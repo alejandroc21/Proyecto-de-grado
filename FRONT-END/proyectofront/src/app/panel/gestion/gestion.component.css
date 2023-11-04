@@ -47,3 +47,8 @@
   button:hover {
     transform: scale(1.1); 
   }
+
+  .datos:hover{
+    transform: scale(1.03);
+  }
+

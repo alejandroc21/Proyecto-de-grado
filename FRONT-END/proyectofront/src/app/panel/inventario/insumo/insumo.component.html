@@ -32,8 +32,8 @@
           <td>{{insumo.cantidad}}</td>
           <td>{{insumo.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
           <td>{{insumo.precio*insumo.cantidad | currency:'USD':'symbol':'1.0-0'}}</td>
-          <td><button type="button" (click)="selectEdithInsumo(insumo)">editar</button></td>
-          <td><button type="button" (click)="eliminarInsumo(insumo.id)">borrar</button></td>
+          <td><button type="button" (click)="selectEdithInsumo(insumo)"><img class="edith" src="/assets/images/edith.png"></button></td>
+          <td><button type="button" (click)="eliminarInsumo(insumo.id)"><img class="delete" src="/assets/images/delete.png"></button></td>
         </tr>
       </tbody>
     </table>

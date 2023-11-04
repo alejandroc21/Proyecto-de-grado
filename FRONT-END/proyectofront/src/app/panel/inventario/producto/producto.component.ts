@@ -39,13 +39,9 @@ export class ProductoComponent implements OnInit{
   botonProducto(){
     if(this.selectedProducto.id===0){
       this.crearProducto();
-      console.log("boton crear");
     }else{
       this.actualizarProducto();
-      console.log("boton actualiza");
     }
-    console.log(this.selectedProducto);
-          console.log(this.productoForm.value);
   }
 
   crearProducto(){
@@ -64,7 +60,6 @@ export class ProductoComponent implements OnInit{
       this.productoService.crearProducto(this.producto).subscribe(res=>{
         this.productoForm.reset();
         this.listarProductos();
-        console.log("crear");
       });
     }else{
       this.productoForm.markAllAsTouched();
@@ -88,7 +83,6 @@ export class ProductoComponent implements OnInit{
       this.productoService.actualizarProducto(this.selectedProducto).subscribe(res=>{
         this.productoForm.reset();
         this.listarProductos();
-        console.log("actualiza");
         this.selectedProducto={id:0,nombre:'',descripcion:'',cantidadInicial:0,cantidadFinal:0,precio:0,fecha:new Date(''),proyecto:this.proyecto};
       })
     }else{

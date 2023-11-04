@@ -34,7 +34,7 @@ h1 {
   font-size: 17px;
 }
 
-.proyecto:focus {
+/* .proyecto:focus {
   background: gray;
   color: white;
 }
@@ -42,4 +42,12 @@ h1 {
 .total:focus {
   background: gray;
   color: white;
+} */
+
+.proyecto:hover {
+  transform: scale(1.05); 
+}
+
+.total:hover {
+  transform: scale(1.05); 
 }

@@ -34,7 +34,6 @@ export class ProyectosComponent implements OnInit{
       this.crearProyecto();
     }else{
       this.actualizarProyecto();
-      console.log("actualiza");
     }
   }
 

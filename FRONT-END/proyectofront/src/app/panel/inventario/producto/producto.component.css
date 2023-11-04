@@ -8,7 +8,7 @@
 
 .marco {
   display: flex;
-  padding-top: 30px;
+  padding-top: 55px;
 }
 
 h1 {
@@ -65,10 +65,11 @@ label {
 
 input {
   vertical-align: middle;
-  margin: 5px 10px 5px 0;
+  width: 130px;
+  margin: 5px 10px 5px 5px;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #c7c7c7;
 }
 
 form button {
@@ -77,6 +78,38 @@ form button {
   border: 1px solid #ddd;
   color: white;
   cursor: pointer;
+}
+
+form{
+  margin-left: 10px;
+  padding-top: 30px;
+}
+
+button:hover{
+  transform: scale(1.05); 
+}
+
+.edith:hover, .delete:hover{
+  transform: scale(1.1); 
+}
+
+h1, td, th{
+  cursor: default;
+}
+
+button{
+  border: none;
+  cursor: pointer;
+}
+
+.edith{
+  width: 23px;
+  margin: 0px 5px 0px 16px;
+}
+
+.delete{
+  width: 30px;
+  margin: 0px 5px 0px 16px;
 }
 
 thead tr {
