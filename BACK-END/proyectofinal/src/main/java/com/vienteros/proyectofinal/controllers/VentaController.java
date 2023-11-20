@@ -32,6 +32,16 @@ public class VentaController {
         return ResponseEntity.ok(service.crearVenta(venta));
     }
 
+    //requiere el id_proyecto e id_factura
+    @PostMapping("/crear-multiple")
+    public ResponseEntity<List<VentaDTO>> crearVentaMultiple(@RequestBody List<Venta> ventas){
+        return ResponseEntity.ok(service.crearVentaMultiple(ventas));
+    }
+
+
+
+
+
     @PutMapping("/actualizar")
     public ResponseEntity<VentaDTO> actualizarVenta(@RequestBody Venta venta){
         return ResponseEntity.ok(service.actualizarVenta(venta));

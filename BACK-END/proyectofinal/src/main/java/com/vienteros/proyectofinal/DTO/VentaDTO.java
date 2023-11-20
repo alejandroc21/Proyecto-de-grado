@@ -19,4 +19,5 @@ public class VentaDTO {
     private double precio;
     private int cantidad;
     private Date fecha;
+    private int FacturaId;
 }

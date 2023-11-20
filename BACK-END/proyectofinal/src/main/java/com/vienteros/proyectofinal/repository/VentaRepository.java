@@ -14,4 +14,6 @@ public interface VentaRepository extends CrudRepository<Venta, Integer> {
     //List<Venta> findAllByProductoProyectoId(int idProyecto);
 
     List<Venta> findByProyectoUsuarioId(int idUsuario);
+
+    //List<Venta> findByFacturaId(int id);
 }

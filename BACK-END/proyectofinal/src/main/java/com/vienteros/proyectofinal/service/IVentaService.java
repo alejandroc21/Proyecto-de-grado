@@ -10,9 +10,13 @@ public interface IVentaService {
 
     VentaDTO crearVenta(Venta venta);
 
+    List<VentaDTO> crearVentaMultiple(List<Venta> ventas);
+
     VentaDTO actualizarVenta(Venta venta);
 
     String eliminarVenta(int id);
 
     List<VentaDTO> listarTodosVentas(int idUsuario);
+
+
 }

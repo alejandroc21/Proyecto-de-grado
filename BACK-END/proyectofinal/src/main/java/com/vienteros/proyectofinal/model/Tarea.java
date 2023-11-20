@@ -6,24 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
-
 
 @Entity
 @Data
-@Table(name = "ventas")
-public class Venta {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "tareas")
+public class Tarea{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre;
-    private double precio;
-    private int cantidad;
-    private Date fecha;
-
-    @ManyToOne(targetEntity = Factura.class)
-    @JoinColumn(name = "id_factura")
-    private Factura factura;
+    private String tarea;
+    private boolean realizado;
 
     @ManyToOne(targetEntity = Proyecto.class)
     @JoinColumn(name = "id_proyecto")

@@ -3,6 +3,10 @@ package com.vienteros.proyectofinal.service.impl;
 import com.vienteros.proyectofinal.DTO.InsumoDTO;
 import com.vienteros.proyectofinal.DTO.ProductoDTO;
 import com.vienteros.proyectofinal.DTO.VentaDTO;
+import com.vienteros.proyectofinal.model.Factura;
+import com.vienteros.proyectofinal.model.Venta;
+import com.vienteros.proyectofinal.repository.FacturaRepository;
+import com.vienteros.proyectofinal.repository.VentaRepository;
 import com.vienteros.proyectofinal.service.IExcelService;
 import com.vienteros.proyectofinal.service.IInsumoService;
 import com.vienteros.proyectofinal.service.IProductoService;
@@ -11,12 +15,17 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExcelService implements IExcelService {
@@ -28,6 +37,12 @@ public class ExcelService implements IExcelService {
     private IProductoService productoService;
     @Autowired
     private IInsumoService insumoService;
+
+    @Autowired
+    private FacturaRepository facturaRepository;
+    @Autowired
+    private VentaRepository ventaRepository;
+
 
 
     @Override
@@ -151,6 +166,24 @@ public class ExcelService implements IExcelService {
         workbook.close();
         return new ByteArrayInputStream(stream.toByteArray());
     }
+
+
+    @Override
+    public ResponseEntity<Resource> factura(int idFactura) {
+        /*
+        Optional<Factura> optionalFactura = facturaRepository.findById(idFactura);
+        List<Venta> ventas = ventaRepository.findByFacturaId(idFactura);
+        if (optionalFactura.isPresent()){
+            Factura factura = optionalFactura.get();
+            File file = ResourceUtils.getFile();
+        }
+
+         */
+        return null;
+    }
+
+
+
 
 
 
