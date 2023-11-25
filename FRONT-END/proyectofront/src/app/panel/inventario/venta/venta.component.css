@@ -44,7 +44,7 @@
   }
   
   .ventas {
-    height: 313px;
+    height: 400px;
     border-radius: 0px 0px 15px 15px;
     overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
   }

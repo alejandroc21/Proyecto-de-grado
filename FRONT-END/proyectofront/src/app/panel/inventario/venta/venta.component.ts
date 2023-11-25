@@ -5,6 +5,7 @@ import { Proyecto } from "src/app/models/proyecto";
 import { Venta } from "src/app/models/venta";
 import { ProductoService } from "src/app/services/inventario/producto.service";
 import { VentaService } from "src/app/services/inventario/venta.service";
+import { Cliente } from 'src/app/models/cliente';
 
 @Component({
   selector: "app-venta",
@@ -15,14 +16,17 @@ export class VentaComponent implements OnInit {
   ventas: Venta[] = [];
   productos: Producto[] = [];
 
-  proyecto: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null };
+  proyecto: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null , categoria:null};
+  cliente:Cliente= { id: 0, documento: '', nombre: '', proyecto: this.proyecto }
   venta: Venta = {
     id: 0,
     nombre: "",
     precio: 0,
     cantidad: 0,
     fecha: new Date(),
+    data:0,
     proyecto: this.proyecto,
+    factura: {id:0, cliente:this.cliente}
   };
   editar: Boolean = false;
 
@@ -120,7 +124,9 @@ export class VentaComponent implements OnInit {
           precio: 0,
           cantidad: 0,
           fecha: new Date(""),
+          data:0,
           proyecto: this.proyecto,
+          factura: {id:0, cliente:this.cliente}
         };
       });
     } else {
@@ -147,7 +153,9 @@ export class VentaComponent implements OnInit {
         precio: 0,
         cantidad: 0,
         fecha: new Date(""),
+        data:0,
         proyecto: this.proyecto,
+        factura: {id:0, cliente:this.cliente}
       };
       this.ventaForm.setValue({
         nombre: "",

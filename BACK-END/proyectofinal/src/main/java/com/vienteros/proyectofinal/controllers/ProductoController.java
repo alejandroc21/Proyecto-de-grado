@@ -37,6 +37,11 @@ public class ProductoController {
         return ResponseEntity.ok(service.actualizarProducto(producto));
     }
 
+    @PutMapping("/actualizar-multiple")
+    public ResponseEntity<String> actualizarProductoMultiple(@RequestBody List<Producto> productos){
+        return ResponseEntity.ok(service.actualizarProductoMultiple(productos));
+    }
+
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminarProducto(@PathVariable int id){
         return ResponseEntity.ok(service.eliminarProducto(id));

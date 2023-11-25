@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Proyecto } from "src/app/models/proyecto";
 import { GestionService } from "src/app/services/gestion/gestion.service";
+import { ClienteService } from "src/app/services/inventario/cliente.service";
 import { InsumoService } from "src/app/services/inventario/insumo.service";
 import { ProductoService } from "src/app/services/inventario/producto.service";
 import { VentaService } from "src/app/services/inventario/venta.service";
 import { ProyectoService } from "src/app/services/proyectos/proyecto.service";
+import { TareasService } from "src/app/services/tareas/tareas.service";
 
 @Component({
   selector: "app-sidebar",
@@ -13,7 +15,7 @@ import { ProyectoService } from "src/app/services/proyectos/proyecto.service";
 })
 export class SidebarComponent implements OnInit {
   proyectos: Proyecto[] = [];
-  vacio:Proyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+  vacio:Proyecto = {id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
   marcador=0;
   // clickProyecto: number = 0;
   // anterior: number = 0;
@@ -23,7 +25,9 @@ export class SidebarComponent implements OnInit {
     private insumoService: InsumoService,
     private productoService: ProductoService,
     private ventasService:VentaService,
-    private gestionService:GestionService
+    private gestionService:GestionService,
+    private clienteService: ClienteService,
+    private tareasService: TareasService
   ) {}
   ngOnInit(): void {
     this.proyectoService.proyectosObs.subscribe({
@@ -40,8 +44,10 @@ export class SidebarComponent implements OnInit {
     this.proyectoService.elegido(proyecto);
     this.insumoService.listarInsumos().subscribe();
     this.productoService.listarProductos().subscribe();
+    this.clienteService.listarClientes().subscribe();
     this.ventasService.listarVentas().subscribe();
     this.gestionService.obtenerDatos();
+    this.tareasService.listarTareas().subscribe();
     this.marcado(proyecto.id);
   }
 
@@ -50,6 +56,7 @@ export class SidebarComponent implements OnInit {
     this.insumoService.listarInsumos().subscribe();
     this.productoService.listarProductos().subscribe();
     this.ventasService.listarVentas().subscribe();
+    this.tareasService.listarTareas().subscribe();
     this.gestionService.obtenerDatos();
   }
 

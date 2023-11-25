@@ -19,17 +19,18 @@ button {
   margin: 2px 10px 0px 0px;
 }
 
-table {
+.table-productos {
   border-collapse: collapse;
-  width: 100%;
+  
+  width:888px;
 }
 
-td,
+.table-productos td, .table-productos
 th {
   padding: 8px;
 }
 
-thead th {
+ thead th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -49,6 +50,7 @@ tbody {
 
 .productos {
   height: 313px;
+  width: 1000px;
   overflow: auto;
 }
 
@@ -57,13 +59,23 @@ main{
   border-radius: 0px 0px 15px 15px;
 }
 
+.cart-lista{
+  display: grid;
+  grid-template-columns: auto 40%;
+}
+
+/* table ventas */
+.cart-table{
+  width: 400px;
+}
+
 /* form */
 
 label {
   margin: 5px 10px 5px 0;
 }
 
-input {
+.form-producto input {
   vertical-align: middle;
   width: 130px;
   margin: 5px 10px 5px 5px;
@@ -72,7 +84,7 @@ input {
   border: 1px solid #c7c7c7;
 }
 
-form button {
+.form-producto button {
   padding: 10px 20px;
   background-color: dodgerblue;
   border: 1px solid #ddd;
@@ -80,10 +92,70 @@ form button {
   cursor: pointer;
 }
 
-form{
+.form-producto{
   margin-left: 10px;
   padding-top: 30px;
+  height: 87px;
+  
 }
+
+/* form cliente */
+
+select{
+  margin: 5px 0px 10px 10px
+}
+
+.abrir{
+  margin: 10px 0px 0px 32px;
+  padding: 3px 7px;
+  background-color: #42A948;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.form-cliente{
+  margin: 0px 0px 10px 20px;
+}
+
+.form-cliente button{
+  padding: 5px 10px;
+  margin-left: 5px;
+  background-color: #42A948;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+ .form-cliente .cerrar{
+  background-color: #A94442;
+  border-radius: 10px;
+}
+
+.form-cliente input{
+  vertical-align: middle;
+  width: 160px;
+  margin: 2px 0px;
+}
+
+.data{
+  height: 87px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.cart-cliente{
+  width: 50%;
+}
+
+.cart-lista{
+  width: 50%;
+}
+
+.listado{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 
 button:hover{
   transform: scale(1.05); 
@@ -102,6 +174,15 @@ button{
   cursor: pointer;
 }
 
+.vender{
+  background-color: #42A948;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 80px;
+  height: 40px;
+  margin: 20px 0px 0px 10px;
+}
+
 .edith{
   width: 23px;
   margin: 0px 5px 0px 16px;
@@ -110,6 +191,16 @@ button{
 .delete{
   width: 30px;
   margin: 0px 5px 0px 16px;
+}
+
+.cart{
+  width: 25px;
+  
+}
+
+.btn-cart{
+  border-radius: 9px;
+  width: 40px;
 }
 
 thead tr {

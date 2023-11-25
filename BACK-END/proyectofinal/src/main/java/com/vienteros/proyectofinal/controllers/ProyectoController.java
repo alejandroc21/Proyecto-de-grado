@@ -1,6 +1,7 @@
 package com.vienteros.proyectofinal.controllers;
 
 import com.vienteros.proyectofinal.DTO.ProyectoDTO;
+import com.vienteros.proyectofinal.model.Categoria;
 import com.vienteros.proyectofinal.model.Proyecto;
 import com.vienteros.proyectofinal.model.Tarea;
 import com.vienteros.proyectofinal.model.TareaBase;
@@ -19,6 +20,11 @@ public class ProyectoController {
 
     @Autowired
     private IProyectoService service;
+
+    @GetMapping("/categorias")
+    public ResponseEntity<Iterable<Categoria>> listarCategorias(){
+        return ResponseEntity.ok(service.listarCategorias());
+    }
 
     @GetMapping("/listar/{idUsuario}")
     public ResponseEntity<List<ProyectoDTO>> getProyectos(@PathVariable int idUsuario){

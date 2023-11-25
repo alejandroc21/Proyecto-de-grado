@@ -1,0 +1,86 @@
+.ng-valid:not(form).ng-touched{
+    border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form).ng-touched{
+    border-left: 5px solid #A94442;
+}
+
+.vacio{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    color: aliceblue;
+    margin-top: 50px;
+}
+
+.add{
+    width: 40px;
+    margin: 4px 8px 0px;
+}
+
+.delete{
+    width: 30px;
+    margin: 7px 0px 0px 10px;
+}
+
+.tarea{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    width: 95%;
+    height: 70px;
+    margin: 15px auto ;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+.vista{
+    display: grid;
+    grid-template-columns: 100px 500px;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.funcion{
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    align-items: center;
+
+}
+
+form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    height: 70px;
+    margin: 15px auto;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+input{
+    width: 60%;
+    margin-right: 15%;
+}
+
+form button{
+    margin: 0px 10px 0px 0px;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1); 
+  }
+
+.tarea:hover{
+    transform: scale(1.01);
+}

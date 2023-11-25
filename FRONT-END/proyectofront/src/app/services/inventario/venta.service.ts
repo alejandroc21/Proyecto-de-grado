@@ -12,7 +12,7 @@ import { Usuario } from 'src/app/models/usuario';
 })
 export class VentaService {
   UrlVenta='http://127.0.0.1:8080/api/venta';
-  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null};
+  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
   ventas:BehaviorSubject<Venta[]> = new BehaviorSubject<Venta[]>([]);
   userData?:Usuario;
 

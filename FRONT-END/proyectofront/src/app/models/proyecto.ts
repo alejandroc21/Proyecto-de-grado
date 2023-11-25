@@ -1,3 +1,4 @@
+import { Categoria } from "./categoria";
 import { Usuario } from "./usuario";
 
 export class Proyecto{
@@ -5,4 +6,5 @@ export class Proyecto{
     nombre: string='';
     descripcion: string='';
     usuario!: Usuario | null;
+    categoria!: Categoria | null;
 }

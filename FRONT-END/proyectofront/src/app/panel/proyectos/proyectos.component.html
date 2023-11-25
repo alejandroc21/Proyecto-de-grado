@@ -3,14 +3,23 @@
   <input formControlName="nombre" type="text" id="nombre" />
   <label for="descripcion">Descripción:</label>
   <input formControlName="descripcion" type="text" id="descripcion" />
+  <select formControlName="category" *ngIf="editar==false" name="categoria" id="categoria">
+    <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option>
+  </select>
   <button type="submit" (click)="botonProyecto()"><img class="add" src="/assets/images/add.png"></button>
 </form>
 
 <div class="proyecto" *ngFor="let proyecto of proyectos">
-  <h1>{{ proyecto.nombre }}</h1>
+  <div class="vista">
+      <h1>{{ proyecto.nombre }}</h1>
   <p>{{ proyecto.descripcion }}</p>
-  <button type="button" (click)="selectEditProyecto(proyecto)"><img class="edith" src="/assets/images/edith.png"></button>
+  
+  </div>
+  <span *ngIf="proyecto.categoria.nombre!=='categoria'" style="color:#757575;">{{proyecto.categoria.nombre}}</span>
+  <div class="funciones">
+    <button type="button" (click)="selectEditProyecto(proyecto)"><img class="edith" src="/assets/images/edith.png"></button>
   <button type="button" (click)="eliminarProyecto(proyecto.id)"><img class="delete" src="/assets/images/delete.png"></button>
+  </div>
 </div>
 <div class="vacio" *ngIf="proyectos.length === 0">
   <h2>Aún no tienes ningun proyecto</h2>

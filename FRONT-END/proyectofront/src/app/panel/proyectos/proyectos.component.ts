@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Categoria } from 'src/app/models/categoria';
 import { Proyecto } from 'src/app/models/proyecto';
 import { ProyectoService } from 'src/app/services/proyectos/proyecto.service';
 
@@ -11,18 +12,23 @@ import { ProyectoService } from 'src/app/services/proyectos/proyecto.service';
 export class ProyectosComponent implements OnInit{
 
   proyectos: Proyecto[]=[];
-  selectProyecto: Proyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+  selectProyecto: Proyecto = {id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
   editar:Boolean=false;
+  categorias: Categoria[]=[];
+
   proyectoForm=this.formBuilder.group({
     nombre: ['', Validators.required],
-    descripcion: ['', Validators.required]
+    descripcion: ['', Validators.required],
+    category: [1]
   });
   
   constructor(private proyectoService: ProyectoService, private formBuilder : FormBuilder){}
 
   ngOnInit(): void {
+    this.proyectoService.listarCategorias().subscribe((data)=>this.categorias=data.body);
     this.listar();
   }
+
 
   listar(){
     this.proyectoService.listarProyectos().subscribe((data)=>this.proyectos=data);
@@ -39,10 +45,28 @@ export class ProyectosComponent implements OnInit{
 
   crearProyecto(){
       if(this.proyectoForm.valid){
-        this.proyectoService.crearProyecto(this.proyectoForm.value as Proyecto).subscribe(res =>{
+        // this.proyectoService.crearProyecto(this.proyectoForm.value as Proyecto).subscribe(res =>{
+        //   this.proyectoForm.reset();
+        //   this.listar();
+        // });
+        this.selectProyecto.nombre=this.proyectoForm.get('nombre')?.value as string;
+        this.selectProyecto.descripcion=this.proyectoForm.get('descripcion')?.value as string;
+        let data:number = Number(this.proyectoForm.value.category) ;
+        
+        
+        console.log(typeof data);
+        let categoriaAdd= this.categorias.find((categoria)=>categoria.id==data);
+        console.log(categoriaAdd);
+        this.selectProyecto.categoria = categoriaAdd;
+        this.proyectoService.crearProyecto(this.selectProyecto).subscribe(res=>{
           this.proyectoForm.reset();
           this.listar();
-          
+          this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
+          this.proyectoForm.setValue({
+            nombre: '',
+            descripcion:'',
+            category: 1
+          });
         });
       }else{
         this.proyectoForm.markAllAsTouched();
@@ -56,7 +80,13 @@ export class ProyectosComponent implements OnInit{
       this.proyectoService.actualizarProyecto(this.selectProyecto).subscribe(res=>{
         this.proyectoForm.reset();
         this.listar();
-        this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+        this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
+        this.editar=false;
+        this.proyectoForm.setValue({
+          nombre: '',
+          descripcion:'',
+          category: 1
+        });
       });
     }else{
       this.proyectoForm.markAllAsTouched();
@@ -71,14 +101,16 @@ export class ProyectosComponent implements OnInit{
       this.selectProyecto=proyecto;
       this.proyectoForm.setValue({
         nombre: this.selectProyecto.nombre,
-        descripcion:this.selectProyecto.descripcion
+        descripcion:this.selectProyecto.descripcion,
+        category:this.selectProyecto.categoria.id
       });
     }else{
       this.editar=false;
-      this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null};
+      this.selectProyecto = {id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
       this.proyectoForm.setValue({
         nombre: '',
-        descripcion:''
+        descripcion:'',
+        category: 1
       });
     }
   }

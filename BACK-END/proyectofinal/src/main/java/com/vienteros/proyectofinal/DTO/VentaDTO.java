@@ -20,4 +20,9 @@ public class VentaDTO {
     private int cantidad;
     private Date fecha;
     private int FacturaId;
+
+
+    public Double getSubTotal(){
+        return this.cantidad * this.precio;
+    }
 }

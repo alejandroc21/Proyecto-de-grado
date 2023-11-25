@@ -4,6 +4,7 @@ import com.vienteros.proyectofinal.DTO.VentaDTO;
 import com.vienteros.proyectofinal.model.Venta;
 import com.vienteros.proyectofinal.service.IVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,18 +35,16 @@ public class VentaController {
 
     //requiere el id_proyecto e id_factura
     @PostMapping("/crear-multiple")
-    public ResponseEntity<List<VentaDTO>> crearVentaMultiple(@RequestBody List<Venta> ventas){
-        return ResponseEntity.ok(service.crearVentaMultiple(ventas));
+    public ResponseEntity<Resource> crearVentaMultiple(@RequestBody List<Venta> ventas){
+        return service.crearVentaMultiple(ventas);
     }
-
-
-
 
 
     @PutMapping("/actualizar")
     public ResponseEntity<VentaDTO> actualizarVenta(@RequestBody Venta venta){
         return ResponseEntity.ok(service.actualizarVenta(venta));
     }
+
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminarVenta(@PathVariable int id){

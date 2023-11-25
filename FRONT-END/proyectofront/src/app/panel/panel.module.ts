@@ -11,6 +11,8 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { ProductoComponent } from './inventario/producto/producto.component';
 import { InsumoComponent } from './inventario/insumo/insumo.component';
 import { VentaComponent } from './inventario/venta/venta.component';
+import { GuiasComponent } from './guias/guias.component';
+import { TareasComponent } from './tareas/tareas.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { VentaComponent } from './inventario/venta/venta.component';
     ProyectosComponent,
     GestionComponent,
     InventarioComponent,
+    GuiasComponent,
+    TareasComponent
     
   ],
   imports: [

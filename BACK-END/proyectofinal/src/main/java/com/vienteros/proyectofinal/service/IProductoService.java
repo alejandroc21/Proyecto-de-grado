@@ -17,4 +17,6 @@ public interface IProductoService {
     String eliminarProducto(int id);
 
     List<ProductoDTO> listarTodosProductos(int idUsuario);
+
+    String actualizarProductoMultiple(List<Producto> productos);
 }

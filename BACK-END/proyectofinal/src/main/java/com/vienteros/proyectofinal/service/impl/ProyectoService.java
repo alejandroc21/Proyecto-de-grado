@@ -1,10 +1,8 @@
 package com.vienteros.proyectofinal.service.impl;
 
 import com.vienteros.proyectofinal.DTO.ProyectoDTO;
-import com.vienteros.proyectofinal.model.Proyecto;
-import com.vienteros.proyectofinal.model.Tarea;
-import com.vienteros.proyectofinal.model.TareaBase;
-import com.vienteros.proyectofinal.model.Usuario;
+import com.vienteros.proyectofinal.model.*;
+import com.vienteros.proyectofinal.repository.CategoriaRepository;
 import com.vienteros.proyectofinal.repository.ProyectoRepository;
 import com.vienteros.proyectofinal.repository.TareaBaseRepository;
 import com.vienteros.proyectofinal.repository.TareaRepository;
@@ -24,6 +22,9 @@ public class ProyectoService implements IProyectoService {
 
     @Autowired
     private TareaRepository tareaRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @Override
     public List<ProyectoDTO> getProyectos(int idUsuario) {
@@ -86,6 +87,11 @@ public class ProyectoService implements IProyectoService {
     @Override
     public Iterable<TareaBase> getTareaBase(int idProyecto) {
         return repository.obtenerTareasPorProyecto(idProyecto);
+    }
+
+    @Override
+    public Iterable<Categoria> listarCategorias() {
+        return categoriaRepository.findAll();
     }
 
 

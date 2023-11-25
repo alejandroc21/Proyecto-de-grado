@@ -23,7 +23,7 @@ header{
 .router{
     grid-column-start: 1;
     grid-column-end: 2;
-    
+    min-width: 888px;
 }
 .image{
     height: auto;

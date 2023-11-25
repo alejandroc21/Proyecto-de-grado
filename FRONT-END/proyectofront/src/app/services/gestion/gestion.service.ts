@@ -29,7 +29,7 @@ export class GestionService {
   insumoMap: Subject<Map<number, object>>=new Subject();
   userData?:Usuario;
 
-  vacio: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null };
+  vacio: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null , categoria:null};
 
   constructor(
     private ventaService: VentaService,

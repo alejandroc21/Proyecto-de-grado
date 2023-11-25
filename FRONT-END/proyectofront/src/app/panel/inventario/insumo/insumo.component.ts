@@ -13,7 +13,7 @@ import { InsumoService } from 'src/app/services/inventario/insumo.service';
 export class InsumoComponent implements OnInit{
 
   insumos:Insumo[]=[];
-  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null};
+  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
   insumo:Insumo={id:0,nombre:'',precio:0,cantidad:0,fecha:new Date(''),proyecto:this.proyecto}
   selectedInsumo:Insumo={id:0,nombre:'',precio:0,cantidad:0,fecha:new Date(''),proyecto:this.proyecto}
   editar:Boolean=false;

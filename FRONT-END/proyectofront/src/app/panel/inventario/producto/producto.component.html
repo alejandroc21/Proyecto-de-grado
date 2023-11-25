@@ -1,5 +1,5 @@
 <main>
-  <form [formGroup]="productoForm">
+  <form class="form-producto" *ngIf="mostrarCart==false" [formGroup]="productoForm">
     <input formControlName="nombre" type="text" placeholder="Nombre">
     <input formControlName="descripcion" type="text" placeholder="Descripcion">
     <input formControlName="precio" type="number" placeholder="Precio">
@@ -8,12 +8,72 @@
     <button type="submit" (click)="botonProducto()">Ingresar</button>
 
   </form>
+
+  <div class="data" *ngIf="mostrarCart">
+    <div class="cart-cliente">
+      <form [formGroup]="ventaform">
+        <select formControlName="client" name="clientes" id="clientes" style="width:180px;">
+          <option  *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nombre}} - {{cliente.documento}}</option>
+        </select>
+      </form>
+      <button class="abrir" *ngIf="!nuevoCliente" type="button" (click)="btnNuevoCliente()">Nuevo cliente</button>
+
+      <form *ngIf="nuevoCliente" [formGroup]="clienteform" class="form-cliente">
+        <input formControlName="nombre" type="text" placeholder="Nombre">
+        <input formControlName="documento" type="text" placeholder="Documento">
+        <button type="submit" (click)="crearCliente()">Ingresar</button>
+        <button class="cerrar" type="button" (click)="btnNuevoCliente()">X</button>
+      </form>
+      
+    </div>
+    <div class="cart-lista">
+      <!-- <ul>
+        <li *ngFor="let producto of cart">
+          <div class="listado">
+            <p>{{producto.nombre}}</p>
+            <p>{{producto.cantidad}}</p>
+            <p>{{producto.precio}}</p>
+            <p>{{producto.precio*producto.cantidad | currency:'USD':'symbol':'1.0-0'}}</p>
+            <p><button type="button">check</button></p>
+          </div>
+        </li>
+      </ul> -->
+      <table class="cart-table">
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+          <th>Editar</th>
+        </tr>
+        <tr *ngFor="let venta of cart">
+          <td>{{venta.nombre}}</td>
+          <td *ngIf="venta!==ventaSelected">{{venta.cantidad}}</td>
+          <td *ngIf="venta==ventaSelected">
+            <input type="number" [(ngModel)]="ventaSelected.cantidad" style="width:80px;" min="1" max="{{ventaSelected.data}}" >
+          </td>
+          <td *ngIf="venta!==ventaSelected">{{venta.precio | currency:'USD':'symbol':'1.0-0'}}</td>
+          <td *ngIf="venta==ventaSelected">
+            <input type="number" [(ngModel)]="ventaSelected.precio" style="width:80px;" min="1">
+          </td>
+          <td>{{venta.precio*venta.cantidad | currency:'USD':'symbol':'1.0-0'}}</td>
+          <td *ngIf="venta!==ventaSelected"><button  type="button" (click)="EditarVenta(venta)"><img class="edith" src="/assets/images/edith.png"></button></td>
+          <td *ngIf="venta==ventaSelected"><button type="button" (click)="EditarVenta(venta)"><img class="edith" src="/assets/images/check.png"></button></td>
+        </tr>
+      </table>
+      <button class="vender" type="button" (click)="ventaMultiple()">Vender</button>
+    </div>
+  </div>
+
+  
+
   <div class="marco">
     <h1>Producto</h1>
+    <button type="button" (click)="btnCart()"><img class="cart" src="/assets/images/cart2.png"></button>
   </div>
   <div class="productos">
     
-    <table>
+    <table class="table-productos">
       <thead>
       <tr>
         <th>N°</th>
@@ -23,6 +83,7 @@
         <th>Cantidad</th>
         <th>Fecha</th>
         <th>Total</th>
+        <th>Venta</th>
         <th>Editar</th>
         <th>Borrar</th>
       </tr>
@@ -36,6 +97,7 @@
         <td>{{producto.cantidadFinal}}</td>
         <td>{{producto.fecha | date: "dd/MM/yy":"GMT+0"}}</td>
         <td>{{producto.precio*producto.cantidadFinal | currency:'USD':'symbol':'1.0-0'}}</td>
+        <td><button type="button" class="btn-cart" (click)="aggToCart(producto)" [style.background-color]="carrito.includes(producto) ? 'yellow':'aliceblue'"><img class="cart" src="/assets/images/cart.png" ></button></td>
         <td><button type="button" (click)="selectEdithProducto(producto)"><img class="edith" src="/assets/images/edith.png"></button></td>
           <td><button type="button" (click)="eliminarProducto(producto.id)"><img class="delete" src="/assets/images/delete.png"></button></td>
       </tr>

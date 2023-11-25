@@ -12,7 +12,7 @@ import { Usuario } from 'src/app/models/usuario';
 export class InsumoService {
 
   UrlInsumo='http://127.0.0.1:8080/api/insumo';
-  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null};
+  proyecto:Proyecto={id:0,nombre:'',descripcion:'',usuario:null, categoria:null};
   insumos:BehaviorSubject<Insumo[]>=new BehaviorSubject<Insumo[]>([]);
   userData?:Usuario;
   

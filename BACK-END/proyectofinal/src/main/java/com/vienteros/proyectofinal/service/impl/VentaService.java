@@ -9,6 +9,8 @@ import com.vienteros.proyectofinal.repository.VentaRepository;
 import com.vienteros.proyectofinal.service.IFacturaService;
 import com.vienteros.proyectofinal.service.IVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,7 +73,7 @@ public class VentaService implements IVentaService {
     }
 
     @Override
-    public List<VentaDTO> crearVentaMultiple(List<Venta> ventas) {
+    public ResponseEntity<Resource> crearVentaMultiple(List<Venta> ventas) {
         Factura factura  = ventas.get(0).getFactura();
 
         Factura facturaGuardada = facturaService.crearFactura(factura);
@@ -98,7 +100,8 @@ public class VentaService implements IVentaService {
             ventaDTOList.add(ventaDTO);
         }
 
-        return ventaDTOList;
+        return facturaService.exportFactura(ventaDTOList, facturaGuardada);
+
     }
 
 

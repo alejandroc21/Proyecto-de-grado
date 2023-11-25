@@ -38,6 +38,12 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
+    public String actualizarProductoMultiple(List<Producto> productos) {
+        repository.saveAll(productos);
+        return "listo";
+    }
+
+    @Override
     public List<ProductoDTO> listarProductos(int idProyecto) {
         List<Producto> productos = repository.findByProyectoId(idProyecto);
         List<ProductoDTO> productosDTO = productos.stream().map(producto->{

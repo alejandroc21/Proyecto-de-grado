@@ -1,0 +1,23 @@
+<form [formGroup]="tareaForm">
+    <label for="nombre">Tarea:</label>
+    <input formControlName="tarea" type="text" id="nombre">
+    <button type="button" (click)="crearTarea()"><img class="add" src="/assets/images/add.png"></button>
+</form>
+
+<div class="tarea" *ngFor="let tarea of tareas;let i = index">
+    <div class="vista">
+        <h1>{{i+1}}</h1>
+        <p>{{tarea.tarea}}</p>
+    </div>
+    <div class="funcion">
+        <input type="checkbox" [(ngModel)]="tarea.realizado" (change)="actualizarTarea(tarea)" style="height: 30px;">
+        <span *ngIf="!tarea.realizado" style="color:#757575;">Pendiente</span>
+        <span *ngIf="tarea.realizado" style="color:#757575;">Realizado</span>
+        <button type="button" (click)="eliminarTarea(tarea.id)"><img class="delete" src="/assets/images/delete.png"></button>
+    </div>
+</div>
+
+
+<div class="vacio" *ngIf="tareas.length==0">
+    <h1 style="color: aliceblue;">No tienes ninguna tarea.</h1>
+</div>

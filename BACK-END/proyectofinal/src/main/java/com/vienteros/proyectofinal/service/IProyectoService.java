@@ -1,6 +1,7 @@
 package com.vienteros.proyectofinal.service;
 
 import com.vienteros.proyectofinal.DTO.ProyectoDTO;
+import com.vienteros.proyectofinal.model.Categoria;
 import com.vienteros.proyectofinal.model.Proyecto;
 import com.vienteros.proyectofinal.model.TareaBase;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,4 +19,6 @@ public interface IProyectoService {
     String eliminarProyecto(int id);
 
     Iterable<TareaBase> getTareaBase(int idProyecto);
+
+    Iterable<Categoria> listarCategorias();
 }

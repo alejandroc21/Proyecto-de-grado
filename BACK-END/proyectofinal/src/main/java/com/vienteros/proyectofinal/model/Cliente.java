@@ -26,7 +26,7 @@ public class Cliente {
     @JoinColumn(name = "id_proyecto")
     private Proyecto proyecto;
 
-    @OneToMany(targetEntity = Factura.class, fetch = FetchType.LAZY, mappedBy = "cliente")
+    @OneToMany(targetEntity = Factura.class, cascade = CascadeType.REMOVE, mappedBy = "cliente")
     @JsonIgnore
     private List<Factura> facturas;
 }
