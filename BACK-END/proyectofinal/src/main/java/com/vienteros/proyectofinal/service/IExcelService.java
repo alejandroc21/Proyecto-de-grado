@@ -8,5 +8,9 @@ import java.io.ByteArrayInputStream;
 public interface IExcelService {
     ByteArrayInputStream exportAll(int idUsuario) throws Exception;
 
+    ByteArrayInputStream exportProject(int idProyecto) throws Exception;
+
     ResponseEntity<Resource> factura(int idFactura);
+
+
 }

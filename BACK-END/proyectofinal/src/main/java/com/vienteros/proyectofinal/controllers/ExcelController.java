@@ -30,6 +30,14 @@ public class ExcelController {
         return ResponseEntity.ok().headers(headers).body(new InputStreamResource(stream));
     }
 
+    @GetMapping("/excel-project/{idProyecto}")
+    public ResponseEntity<InputStreamResource> exportProject(@PathVariable int idProyecto) throws Exception{
+        ByteArrayInputStream stream = excelService.exportProject(idProyecto);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition","attachment; filename=usuariodata.xlsx");
+        return ResponseEntity.ok().headers(headers).body(new InputStreamResource(stream));
+    }
+
     @GetMapping("factura/{id}")
     public ResponseEntity<Resource> factura(@PathVariable int idFactura){
         return excelService.factura(idFactura);

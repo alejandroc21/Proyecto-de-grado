@@ -29,7 +29,7 @@ export class GestionService {
   insumoMap: Subject<Map<number, object>>=new Subject();
   userData?:Usuario;
 
-  vacio: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null , categoria:null};
+  proyecto: Proyecto = { id: 0, nombre: "", descripcion: "", usuario: null , categoria:null};
 
   constructor(
     private ventaService: VentaService,
@@ -55,11 +55,21 @@ export class GestionService {
         this.productos = productosData;
       },
     });
+
+    proyectoService.selected.subscribe({
+      next:(data)=>{
+        this.proyecto=data;
+      }
+    });
   }
 
   excelUsuario(){
-    this.userData=this.proyectoService.getUsuarioData();
-    return this.http.get('http://127.0.0.1:8080/api/export/excel-all/'+this.userData.id, {responseType: 'blob'});
+    if(this.proyecto.id===0){
+      this.userData=this.proyectoService.getUsuarioData();
+      return this.http.get('http://127.0.0.1:8080/api/export/excel-all/'+this.userData.id, {responseType: 'blob'});
+    }else{
+      return this.http.get('http://127.0.0.1:8080/api/export/excel-project/'+this.proyecto.id, {responseType: 'blob'});
+    }
   }
 
   obtenerDatos() {
